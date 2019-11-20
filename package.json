@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && node app.js",
-    "heroku-postbuild": "cd grand_new_client && npm install && npm run-script build"
+    "start": "node app.js",
+    "heroku-postbuild": "npm install && cd grand_new_client && npm install && npm run-script build"
   },
   "author": "",
   "license": "ISC",
