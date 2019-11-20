@@ -1,0 +1,25 @@
+{
+  "name": "mn-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && node app.js",
+    "heroku-postbuild": "cd grand_new_client && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.16.0",
+    "datauri": "^2.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.7.1",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1"
+  }
+}
