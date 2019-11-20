@@ -37,7 +37,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 /*Adds the react production build to serve react requests*/
-app.use(express.static('grand_new_client/build'));
+app.use('/', express.static('grand_new_client/build'));
 /*React root*/
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'grand_new_client', 'build', 'index.html'));
