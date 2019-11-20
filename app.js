@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./common/config/env.config');
-const path = require('path');
+var path = require('path');
 const app = express();
 
 mongoose.set('useCreateIndex', true);
