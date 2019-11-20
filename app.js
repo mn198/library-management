@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./common/config/env.config');
-
+const path = require('path');
 const app = express();
 
 mongoose.set('useCreateIndex', true);
@@ -47,7 +47,7 @@ LendingRouter.routesConfig(app);
 app.use(express.static(path.join(__dirname, '../grand_new_client/build')));
 /*React root*/
 app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname + '../grand_new_client/build/index.html'));
+    res.sendFile(path.join(__dirname + '../grand_new_client/build/index.html'));
 });
 
 const server = app.listen(config.port, () => {
