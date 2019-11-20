@@ -50,6 +50,6 @@ RackRouter.routesConfig(app);
 ReaderRouter.routesConfig(app);
 LendingRouter.routesConfig(app);
 
-const server = app.listen(config.port, () => {
+const server = app.listen(process.env.PORT || config.port, () => {
     console.log('app listening at port %s', config.port);
 })
