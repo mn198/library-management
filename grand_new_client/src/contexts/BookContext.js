@@ -1,6 +1,8 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import {bookReducer} from '../reducers/BookReducer';
 import axios from 'axios';
+import config from '../config/config';
+
 export const bookContext = createContext();
 
 const BookContextProvider = (props) => {
@@ -12,7 +14,7 @@ const BookContextProvider = (props) => {
     const [ book, dispatch ] = useReducer(bookReducer, initState);
 
     useEffect(() => {
-        axios.get('http://localhost:3600/books')
+        axios.get(config.base_url + '/books')
             .then((result) => {
                 dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
             })

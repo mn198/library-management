@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect} from 'react';
 import {userReducer} from '../reducers/UserReducer';
 import axios from 'axios';
+import config from '../config/config';
 
 export const userContext = createContext();
 
@@ -13,7 +14,7 @@ const UserContextProvider = (props) => {
     const [user, dispatch] = useReducer(userReducer, initState);
 
     useEffect(() => {
-        axios.get('http://localhost:3600/users')
+        axios.get(config.base_url + '/users')
             .then((result) => {
                 dispatch({ type: 'GET_USERS', payload: result.data})
             })
