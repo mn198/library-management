@@ -369,7 +369,7 @@ function Books(props) {
               
               <DialogContent>
                 <Container>
-                <form encrypt="multipart/form-data">
+
                   <GridContainer>
                   <GridItem xs={12} sm={12} md={8}>
                     <Card>
@@ -551,7 +551,7 @@ function Books(props) {
                     </Card>
                   </GridItem>
                 </GridContainer>
-                </form>
+
                 </Container>
                 </DialogContent>
               </Dialog>
@@ -571,7 +571,7 @@ function Books(props) {
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
           <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt="avatar" src={bookIcon} classes={classes.border}/>
+                <Avatar alt="avatar" src={bookIcon}/>
               </ListItemAvatar>
               <ListItemText
                 primary= {'Tên sách: ' + b.title}

@@ -42,11 +42,6 @@ const styles = theme => ({
       contentWrapper: {
         margin: '40px 16px',
       },
-      modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
       cardCategoryWhite: {
         color: "rgba(255,255,255,.62)",
         margin: "0",
@@ -63,19 +58,9 @@ const styles = theme => ({
         marginBottom: "3px",
         textDecoration: "none"
       },
-      mt10: {
-        marginTop: theme.spacing(3)
-      },  
       formControl: {
         marginTop: theme.spacing(3),
         minWidth: 150,
-      },
-      modal_paper: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(2, 4, 3),
-      },
-      scrollable: {
-        overflow: 'scroll'
       },
       appBar: {
         position: 'relative',

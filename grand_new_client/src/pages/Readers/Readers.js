@@ -397,9 +397,7 @@ function Readers(props) {
                 scroll={'body'}
               >
                 <DialogContent>
-                <Paper className={classes.modal_paper}>
-                <Container>
-                  <form encrypt="multipart/form-data">
+              
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={8}>
                       <Card>
@@ -408,6 +406,7 @@ function Readers(props) {
                           <p className={classes.cardCategoryWhite}>{values.description}</p>
                         </CardHeader>
                         <CardBody>
+                          <Container>
                           <GridContainer>
                             <GridItem xs={12} sm={12} md={8}>
                               <CustomInput
@@ -440,6 +439,7 @@ function Readers(props) {
                               </FormControl>
                             </GridItem>
                           </GridContainer>
+                          </Container>
                           <GridContainer>
                             <GridItem xs={12} sm={12} md={6}>
                               <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -545,9 +545,7 @@ function Readers(props) {
                       </Card>
                     </GridItem>
                   </GridContainer>
-                  </form>
-                  </Container>
-                </Paper>
+                
                 </DialogContent>
               </Dialog>
               {/* end add reader modal */}

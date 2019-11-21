@@ -69,11 +69,6 @@ const styles = theme => ({
       contentWrapper: {
         margin: '40px 16px',
       },
-      modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
       cardCategoryWhite: {
         color: "rgba(255,255,255,.62)",
         margin: "0",
@@ -347,9 +342,6 @@ const BookLending = (props) => {
                 scroll={'body'}
               >
                 <DialogContent>
-                <Paper className={classes.modal_paper}>
-                  <Container>
-                    <form encrypt="multipart/form-data">
                         <Card>
                           <CardHeader color="info">
                             <h4 className={classes.cardTitleWhite}>Thêm thông tin mượn sách</h4>
@@ -445,9 +437,6 @@ const BookLending = (props) => {
                             <Button color="danger" onClick={handleCloseModal}>Đóng</Button>
                           </CardFooter>
                         </Card>
-                    </form>
-                  </Container>
-                </Paper>
                 </DialogContent>
               </Dialog>
               <Tooltip title="Reload">
