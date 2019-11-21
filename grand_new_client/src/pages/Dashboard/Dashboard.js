@@ -52,7 +52,7 @@ export default function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Đọc giả</p>
               <h3 className={classes.cardTitle}>
-                { reader.list.length } <small>Bạn đọc</small>
+                { console.log(reader.list) } <small>Bạn đọc</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
