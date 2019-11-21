@@ -396,7 +396,7 @@ function Readers(props) {
                 onClose={handleClose}
                 scroll={'body'}
               >
-                <DialogContent className={classes.bigger}>
+                <DialogContent fullWidth={true} maxWidth='md'>
               
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={8}>

@@ -96,7 +96,7 @@ const styles = theme => ({
         flex: 1,
       },
       bigger: {
-        padding: theme.spacing(3)
+        minWidth: 110
       }
 })
 
@@ -250,7 +250,7 @@ const BookLending = (props) => {
                     handleCloseModal();
                     getLendingList();
               })
-              .catch((err) => {
+              .catch((err) => { 
                   setValues(old => ({
                       ...old,
                       snackbar_message: 'Có lỗi xảy ra khi thêm thông tin mượn trả sách !',
@@ -333,7 +333,7 @@ const BookLending = (props) => {
                 onClose={handleCloseModal}
                 scroll={'body'}
               >
-                <DialogContent className={classes.bigger}>
+                <DialogContent fullWidth={true} maxWidth='md'>
                         <Card>
                           <CardHeader color="info">
                             <h4 className={classes.cardTitleWhite}>Thêm thông tin mượn sách</h4>
@@ -404,7 +404,7 @@ const BookLending = (props) => {
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
-                                    <FormControl>
+                                    <FormControl className={classes.bigger}>
                                       <InputLabel htmlFor="returnDate">Số ngày mượn</InputLabel>
                                       <Select
                                         onChange={handleChange}
