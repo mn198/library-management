@@ -368,7 +368,7 @@ function Books(props) {
               <Dialog
                 open={openModal}
                 onClose={handleCloseModal}
-                className={classes.modal}
+                scroll={'body'}
               >
               
               <DialogContent>
