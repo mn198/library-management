@@ -19,6 +19,13 @@ import PrivateRoute from './helpers/PrivateRoute';
 
 const hist = createBrowserHistory();
 
+// check access token
+import setAuthToken from './helpers/setAuthToken';
+if(localStorage.jwtToken){
+    const token = localStorage.jwtToken;
+    setAuthToken(token);
+}
+
 ReactDOM.render(
     <AuthContextProvider>
         <UserContextProvider>

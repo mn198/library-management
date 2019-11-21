@@ -34,7 +34,7 @@ import axios from 'axios';
 import { base_url } from '../../config/config';
 // jsonwebtoken decode
 import jwt_decode from 'jwt-decode'; 
-import {setAuthToken} from '../../helpers/setAuthToken';
+import setAuthToken from '../../helpers/setAuthToken';
 
 function Copyright() {
     return (
