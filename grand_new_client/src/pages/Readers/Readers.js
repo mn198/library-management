@@ -105,7 +105,7 @@ const styles = theme => ({
   },
   formControl: {
     marginTop: theme.spacing(3),
-    minWidth: 120,
+    minWidth: 100,
   },
   dob: {
     marginTop: theme.spacing(3)
@@ -122,8 +122,8 @@ const styles = theme => ({
     width: 50,
     height: 50,
   },
-  hide: {
-    overflow: 'hidden'
+  bigger: {
+    padding: theme.spacing(3)
   }
 });
 
@@ -396,7 +396,7 @@ function Readers(props) {
                 onClose={handleClose}
                 scroll={'body'}
               >
-                <DialogContent>
+                <DialogContent className={classes.bigger}>
               
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={8}>
@@ -406,7 +406,6 @@ function Readers(props) {
                           <p className={classes.cardCategoryWhite}>{values.description}</p>
                         </CardHeader>
                         <CardBody>
-                          <Container>
                           <GridContainer>
                             <GridItem xs={12} sm={12} md={8}>
                               <CustomInput
@@ -512,7 +511,6 @@ function Readers(props) {
                               />
                             </GridItem>
                           </GridContainer>
-                          </Container>
                         </CardBody>
                         <CardFooter>
                           {values.button === 1 ? <AddReaderButton/> : <EditReaderButton/>}
@@ -575,7 +573,7 @@ function Readers(props) {
                   <Typography
                       component="span"
                       variant="body2"
-                      className={classes.inline + ' ' + classes.hide}
+                      className={classes.inline}
                       color="textPrimary"
                     >
                       Barcode: {' ' + rd._id}

@@ -95,8 +95,8 @@ const styles = theme => ({
       weightedFont: {
         fontWeight: '500'
       },
-      scrollable: {
-        overflow: 'scroll'
+      bigger: {
+        padding: theme.spacing(3)
       }
 })
 
@@ -367,8 +367,7 @@ function Books(props) {
                 scroll={'body'}
               >
               
-              <DialogContent>
-                <Container>
+              <DialogContent className={classes.bigger}>
 
                   <GridContainer>
                   <GridItem xs={12} sm={12} md={8}>
@@ -378,7 +377,6 @@ function Books(props) {
                         <p className={classes.cardCategoryWhite}>Nhập tất cả thông tin về sách</p>
                       </CardHeader>
                       <CardBody>
-                        <Container>
                         <GridContainer>
                           <GridItem xs={12} sm={12} md={3}>
                             <CustomInput
@@ -529,7 +527,6 @@ function Books(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                        </Container>
                       </CardBody>
                       <CardFooter>
                         {values.button === 1 ? <AddBookButton/> : <EditBookButton/>}
@@ -554,7 +551,6 @@ function Books(props) {
                   </GridItem>
                 </GridContainer>
 
-                </Container>
                 </DialogContent>
               </Dialog>
               <Tooltip title="Tải lại">

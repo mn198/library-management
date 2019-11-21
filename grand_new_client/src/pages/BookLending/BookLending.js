@@ -95,6 +95,9 @@ const styles = theme => ({
         marginLeft: theme.spacing(2),
         flex: 1,
       },
+      bigger: {
+        padding: theme.spacing(3)
+      }
 })
 
 const useStyles = makeStyles(styles);
@@ -330,7 +333,7 @@ const BookLending = (props) => {
                 onClose={handleCloseModal}
                 scroll={'body'}
               >
-                <DialogContent>
+                <DialogContent className={classes.bigger}>
                         <Card>
                           <CardHeader color="info">
                             <h4 className={classes.cardTitleWhite}>Thêm thông tin mượn sách</h4>
