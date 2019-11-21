@@ -23,6 +23,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import AddIcon from '@material-ui/icons/Add';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
@@ -360,13 +365,13 @@ function Books(props) {
                   <AddIcon/>
                 </IconButton>
               </Tooltip>
-              <Modal
+              <Dialog
                 open={openModal}
                 onClose={handleCloseModal}
                 className={classes.modal}
               >
-                <Paper className={classes.scrollable}>
-                <Container>
+              
+              <DialogContent>
                 <form encrypt="multipart/form-data">
                   <GridContainer>
                   <GridItem xs={12} sm={12} md={8}>
@@ -550,9 +555,8 @@ function Books(props) {
                   </GridItem>
                 </GridContainer>
                 </form>
-               </Container>
-                </Paper>
-              </Modal>
+                </DialogContent>
+              </Dialog>
               <Tooltip title="Tải lại">
                 <IconButton onClick={handleReload}>
                   <RefreshIcon className={classes.block} color="inherit" />
