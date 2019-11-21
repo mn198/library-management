@@ -378,6 +378,7 @@ function Books(props) {
                         <p className={classes.cardCategoryWhite}>Nhập tất cả thông tin về sách</p>
                       </CardHeader>
                       <CardBody>
+                        <Container>
                         <GridContainer>
                           <GridItem xs={12} sm={12} md={3}>
                             <CustomInput
@@ -528,6 +529,7 @@ function Books(props) {
                             />
                           </GridItem>
                         </GridContainer>
+                        </Container>
                       </CardBody>
                       <CardFooter>
                         {values.button === 1 ? <AddBookButton/> : <EditBookButton/>}

@@ -439,7 +439,7 @@ function Readers(props) {
                               </FormControl>
                             </GridItem>
                           </GridContainer>
-                          </Container>
+                          
                           <GridContainer>
                             <GridItem xs={12} sm={12} md={6}>
                               <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -512,6 +512,7 @@ function Readers(props) {
                               />
                             </GridItem>
                           </GridContainer>
+                          </Container>
                         </CardBody>
                         <CardFooter>
                           {values.button === 1 ? <AddReaderButton/> : <EditReaderButton/>}

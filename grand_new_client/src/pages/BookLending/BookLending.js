@@ -87,18 +87,7 @@ const styles = theme => ({
       },
       mt10: {
         marginTop: theme.spacing(3)
-      },  
-      formControl: {
-        marginTop: theme.spacing(3),
-        minWidth: 150,
-      },
-      modal_paper: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(2, 4, 3),
-      },
-      scrollable: {
-        overflow: 'scroll'
-      },
+      }, 
       appBar: {
         position: 'relative',
       },
@@ -412,7 +401,7 @@ const BookLending = (props) => {
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
-                                    <FormControl className={classes.formControl}>
+                                    <FormControl>
                                       <InputLabel htmlFor="returnDate">Số ngày mượn</InputLabel>
                                       <Select
                                         onChange={handleChange}
