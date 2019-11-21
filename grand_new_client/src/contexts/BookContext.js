@@ -16,7 +16,6 @@ const BookContextProvider = (props) => {
     useEffect(() => {
         axios.get(config.base_url + '/books')
             .then((result) => {
-                console.log(result);
                 dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
             })
             .catch((err) => {

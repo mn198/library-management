@@ -91,7 +91,7 @@ export default function Dashboard() {
                 <AccountBalanceWalletIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Mượn trả</p>
-              <h3 className={classes.cardTitle}>{ lending.length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -110,7 +110,7 @@ export default function Dashboard() {
                 <HistoryIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Lịch sử mượn trả</p>
-              <h3 className={classes.cardTitle}>{lending.length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
