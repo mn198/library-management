@@ -11,7 +11,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import Modal from '@material-ui/core/Modal';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -24,10 +23,7 @@ import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import AddIcon from '@material-ui/icons/Add';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
@@ -372,6 +368,7 @@ function Books(props) {
               >
               
               <DialogContent>
+                <Container>
                 <form encrypt="multipart/form-data">
                   <GridContainer>
                   <GridItem xs={12} sm={12} md={8}>
@@ -555,6 +552,7 @@ function Books(props) {
                   </GridItem>
                 </GridContainer>
                 </form>
+                </Container>
                 </DialogContent>
               </Dialog>
               <Tooltip title="Tải lại">

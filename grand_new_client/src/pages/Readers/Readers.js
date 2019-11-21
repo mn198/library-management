@@ -42,6 +42,8 @@ import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Snackbar from '@material-ui/core/Snackbar';
 import Container from '@material-ui/core/Container';
 import AddIcon from '@material-ui/icons/Add';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 
 import {
   MuiPickersUtilsProvider,
@@ -49,7 +51,6 @@ import {
 } from '@material-ui/pickers';
 
 import avatar from "../../assets/img/new_logo.png";
-import { Modal } from '@material-ui/core';
 import ReaderSkeleton from './ReaderSkeleton';
 import config from '../../config/config';
 
@@ -80,11 +81,6 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
-  },
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   modal_paper: {
     backgroundColor: theme.palette.background.paper,
@@ -395,11 +391,12 @@ function Readers(props) {
               </Tooltip>
 
               {/* Add reader modal */}
-              <Modal
+              <Dialog
                 open={open}
                 onClose={handleClose}
-                className={classes.modal}
+                scroll={'body'}
               >
+                <DialogContent>
                 <Paper className={classes.modal_paper}>
                 <Container>
                   <form encrypt="multipart/form-data">
@@ -551,7 +548,8 @@ function Readers(props) {
                   </form>
                   </Container>
                 </Paper>
-              </Modal>
+                </DialogContent>
+              </Dialog>
               {/* end add reader modal */}
               <Tooltip title="Tải lại">
                 <IconButton onClick={handleReload}>

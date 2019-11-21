@@ -10,7 +10,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import Modal from '@material-ui/core/Modal';
 import Snackbar from '@material-ui/core/Snackbar';
 import Avatar from '@material-ui/core/Avatar';
 import { Table, TableRow, TableCell, TableHead, TableBody, Typography } from '@material-ui/core';
@@ -23,6 +22,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
@@ -341,11 +341,12 @@ const BookLending = (props) => {
                   <AddIcon/>
                 </IconButton>
               </Tooltip>
-              <Modal
+              <Dialog
                 open={openModal}
                 onClose={handleCloseModal}
-                className={classes.modal}
+                scroll={'body'}
               >
+                <DialogContent>
                 <Paper className={classes.modal_paper}>
                   <Container>
                     <form encrypt="multipart/form-data">
@@ -447,7 +448,8 @@ const BookLending = (props) => {
                     </form>
                   </Container>
                 </Paper>
-              </Modal>
+                </DialogContent>
+              </Dialog>
               <Tooltip title="Reload">
                 <IconButton onClick={() => handleReload()}>
                   <RefreshIcon className={classes.block} color="inherit" />
