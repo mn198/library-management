@@ -183,7 +183,7 @@ export default function Landing(props){
                             <Grid item xs={12} sm={12} md={4}>
                                 <InfoArea
                                 title="Bảo mật"
-                                description="Các thông tin quan trọng sẽ được mã hóa khi truyền qua mạng."
+                                description="Các thông tin quan trọng sẽ được mã hóa."
                                 icon={Security}
                                 iconColor="danger"
                                 vertical

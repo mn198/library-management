@@ -13,6 +13,8 @@ exports.routesConfig = (app) => {
     ])
 
     app.get('/users', [
+        ValidationMiddleware.validJWTNeeded,
+        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UserController.list
     ])
 
@@ -23,14 +25,14 @@ exports.routesConfig = (app) => {
     ])
 
     app.patch('/users/:userId', [
-        // ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        ValidationMiddleware.validJWTNeeded,
+        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UserController.update
     ])
 
     app.delete('/users/:userId', [
-        // ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
+        ValidationMiddleware.validJWTNeeded,
+        PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         UserController.delete
     ])
 }

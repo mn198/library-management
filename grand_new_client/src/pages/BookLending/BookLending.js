@@ -162,7 +162,7 @@ const BookLending = (props) => {
         readerID: '',
         bookID: '',
         dueDate: '',
-        returnDate: '',
+        returnDate: '3',
         snackbar_variant: '',
         snackbar_message: ''
     })
@@ -239,42 +239,43 @@ const BookLending = (props) => {
 
     const handleAddLending = (e) => {
 
-        var formData = new FormData();
-        formData.append('userId', values.readerID);
-        formData.append('book', values.bookID);
-        formData.append('dueDate', dayjs(new Date()).add(values.returnDate, 'day'));
+        if(values.readerID === '' || values.bookID === ''){
+          setValues(old => ({
+            ...old,
+            snackbar_message: 'Vui lòng chọn đọc giả và sách !',
+            snackbar_variant: 'error'
+          }))
+          handleOpenSnackbar();
+        } else {
+          var formData = new FormData();
+          formData.append('userId', values.readerID);
+          formData.append('book', values.bookID);
+          formData.append('dueDate', dayjs(new Date()).add(values.returnDate, 'day'));
 
-        Axios.post(config.base_url + '/lendings', formData, { header: { 'Content-Type': 'multipart/form-data'}})
-            .then((result) => {
-                setValues(old => ({
-                    ...old,
-                    snackbar_message: 'Đã lưu thông tin mượn trả sách thành công !',
-                    snackbar_variant: 'success'
-                  }))
-                  handleOpenSnackbar();
-                  handleCloseModal();
-                  getLendingList();
-            })
-            .catch((err) => {
-                setValues(old => ({
-                    ...old,
-                    snackbar_message: 'Có lỗi xảy ra khi thêm thông tin mượn trả sách !',
-                    snackbar_variant: 'error'
-                  }))
-                  handleOpenSnackbar();
-            })
-            
+          Axios.post(config.base_url + '/lendings', formData, { header: { 'Content-Type': 'multipart/form-data'}})
+              .then((result) => {
+                  setValues(old => ({
+                      ...old,
+                      snackbar_message: 'Đã lưu thông tin mượn trả sách thành công !',
+                      snackbar_variant: 'success'
+                    }))
+                    handleOpenSnackbar();
+                    handleCloseModal();
+                    getLendingList();
+              })
+              .catch((err) => {
+                  setValues(old => ({
+                      ...old,
+                      snackbar_message: 'Có lỗi xảy ra khi thêm thông tin mượn trả sách !',
+                      snackbar_variant: 'error'
+                    }))
+                    handleOpenSnackbar();
+              })
+      }
     }
 
     const handleReload = () => {
       getLendingList();
-    }
-
-    const handleEditPressed = (id) => {
-      var curr = lending.list.filter(item => {
-        return item['_id'] === id;
-      });
-      setCurrent(curr[0]);
     }
 
     // reader choosen
@@ -293,11 +294,20 @@ const BookLending = (props) => {
     const handleCloseBookChoosen = () => setOpenBookChoosen(false);
     const handleOpenBookChoosen = () => setOpenBookChoosen(true);
     const handleBookChoosen = (book) => {
-      setValues(oldValues => ({
-        ...oldValues,
-        bookID: book
-      }))
-      handleCloseBookChoosen();
+      if(book.status !== 'Available'){
+        setValues(old => ({
+          ...old,
+          snackbar_message: 'Quyển sách này hiện đang được đọc giả khác mượn. Thử chọn quyển khác!',
+          snackbar_variant: 'error'
+        }))
+        handleOpenSnackbar();
+      } else {
+        setValues(oldValues => ({
+          ...oldValues,
+          bookID: book._id
+        }))
+        handleCloseBookChoosen();
+      }
     }
     
     useEffect(() => {
@@ -528,7 +538,7 @@ const BookLending = (props) => {
             <Grid container >
       { reader.isLoading === false ? null : reader.list.map((rd) => (
           <React.Fragment key={rd._id} >
-              <Grid item xs={12} md={4} onClick={handleCloseReaderChoosen}>
+              <Grid item xs={12} md={4}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar onClick={() => handleReaderChoosen(rd._id)}>
                 <Avatar alt="avatar" src={rd.avatar ? rd.avatar : avatar} className={classes.pointer}/>
@@ -604,9 +614,9 @@ const BookLending = (props) => {
           <Container>
             <Grid container>
           { book.isLoading === false ? null : book.list.map((b) => ( 
-          <Grid item key={b._id} onClick={() => handleEditPressed(b._id)}>
+          <Grid item key={b._id}>
           <ListItem alignItems="flex-start">
-              <ListItemAvatar onClick={() => handleBookChoosen(b._id)}>
+              <ListItemAvatar onClick={() => handleBookChoosen(b)}>
                 <Avatar alt="avatar" src={bookIcon} classes={classes.border}/>
               </ListItemAvatar>
               <ListItemText

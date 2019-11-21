@@ -93,6 +93,9 @@ const styles = theme => ({
       },
       weightedFont: {
         fontWeight: '500'
+      },
+      scrollable: {
+        overflow: 'scroll'
       }
 })
 
@@ -362,7 +365,7 @@ function Books(props) {
                 onClose={handleCloseModal}
                 className={classes.modal}
               >
-                <Paper>
+                <Paper className={classes.scrollable}>
                 <Container>
                 <form encrypt="multipart/form-data">
                   <GridContainer>
