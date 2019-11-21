@@ -16,11 +16,11 @@ import BookContextProvider from './contexts/BookContext';
 import LendingContextProvider from './contexts/LendingContext';
 // helpers
 import PrivateRoute from './helpers/PrivateRoute';
+import setAuthToken from './helpers/setAuthToken';
 
 const hist = createBrowserHistory();
 
 // check access token
-import setAuthToken from './helpers/setAuthToken';
 if(localStorage.jwtToken){
     const token = localStorage.jwtToken;
     setAuthToken(token);
