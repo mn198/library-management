@@ -332,8 +332,10 @@ const BookLending = (props) => {
                 open={openModal}
                 onClose={handleCloseModal}
                 scroll={'body'}
+                fullWidth={true} 
+                maxWidth='md'
               >
-                <DialogContent fullWidth={true} maxWidth='md'>
+                <DialogContent>
                         <Card>
                           <CardHeader color="info">
                             <h4 className={classes.cardTitleWhite}>Thêm thông tin mượn sách</h4>

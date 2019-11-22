@@ -365,9 +365,11 @@ function Books(props) {
                 open={openModal}
                 onClose={handleCloseModal}
                 scroll={'body'}
+                fullWidth={true} 
+                maxWidth='md'
               >
               
-              <DialogContent fullWidth={true} maxWidth='md'>
+              <DialogContent>
 
                   <GridContainer>
                   <GridItem xs={12} sm={12} md={8}>

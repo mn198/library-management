@@ -395,6 +395,8 @@ function Readers(props) {
                 open={open}
                 onClose={handleClose}
                 scroll={'body'}
+                fullWidth={true} 
+                maxWidth='md'
               >
                 <DialogContent fullWidth={true} maxWidth='md'>
               
