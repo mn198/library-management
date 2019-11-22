@@ -301,6 +301,9 @@ const BookLending = (props) => {
         getLendingList();
     }, [])
 
+    const bookFormat = {'Magazine': 'Tạp chí', 'Journal': 'Nhật ký', 'Ebook': 'Sách điện tử', 'Newspaper': 'Báo', 'Audiobook': 'Sách nói'};
+    const bookStatus = {'Available': 'Hiện còn', 'Loaned': 'Đang được mượn', 'Lost': 'Mất', 'Reserved': 'Đã được đặt'}
+
     return (
     <Paper className={classes.paper}>
       <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
@@ -646,7 +649,7 @@ const BookLending = (props) => {
                       color="textPrimary"
                       className={classes.block}
                     >
-                      Trạng thái: <Badge color="success">{' ' + b.status}</Badge>
+                      Trạng thái: <Badge color={b.status === 'Available' ? "success" : "danger"}>{' ' + bookStatus[b.status]}</Badge>
                     </Typography>
                     <Typography
                       component="span"
@@ -654,7 +657,7 @@ const BookLending = (props) => {
                       color="textPrimary"
                       className={classes.block}
                     >
-                      Thể loại: <Badge color="info">{' ' + b.format}</Badge>
+                      Thể loại: <Badge color="info">{' ' + bookFormat[b.format]}</Badge>
                     </Typography>
                     <Typography
                       component="span"
