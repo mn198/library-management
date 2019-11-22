@@ -174,7 +174,6 @@ export default function SignIn(props) {
               }
           })
           .catch((err) => {
-            console.log(err);
             setOpen(true);
           })
     }
@@ -265,7 +264,7 @@ export default function SignIn(props) {
             <MySnackbarContentWrapper
                 onClose={handleClose}
                 variant="error"
-                message="Email or password is invalid!"
+                message="Tài khoản hoặc mật khẩu không chính xác."
             />
             </Snackbar>
             </CardBody>

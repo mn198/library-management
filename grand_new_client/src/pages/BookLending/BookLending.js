@@ -96,7 +96,7 @@ const styles = theme => ({
         flex: 1,
       },
       bigger: {
-        minWidth: 110
+        minWidth: 130
       }
 })
 
