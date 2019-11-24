@@ -133,6 +133,11 @@ function Readers(props) {
   dayjs.extend(relativeTime);
   const { reader, dispatch } = useContext(readerContext);
 
+  // alert delete
+  const [alertDelete, setAlertDelete] = useState(false);
+  const handleOpenAlertDelete = () => { setAlertDelete(true); }
+  const handleCloseAlertDelete = () => { setAlertDelete(false); }
+  //search
   const [ filter, setFilter ] = useState('');
     const [ filteredData, setFilterData] = useState(reader.list);
     const handleSearchChange = (e) => {
@@ -152,7 +157,7 @@ function Readers(props) {
   }
   const DeleteReaderButton = () => {
     return(
-      <Button color="danger" onClick={handleDeleteReader}>Xóa</Button>
+      <Button color="danger" onClick={handleOpenAlertDelete}>Xóa</Button>
     )
   }
   const EditReaderButton = () => {
@@ -638,6 +643,26 @@ function Readers(props) {
         />
       </Snackbar>
       {/* end --- */}
+
+      <Dialog
+        open={alertDelete}
+        onClose={handleCloseAlertDelete}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Xác nhận!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Bạn có chắc muốn xóa thông tin đọc giả này ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseAlertDelete} color="primary">
+            Hủy
+          </Button>
+          <DeleteReaderButton/>
+        </DialogActions>
+      </Dialog>
 
     </Paper>        
   )
