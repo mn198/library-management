@@ -720,7 +720,7 @@ const BookLending = (props) => {
           <Button onClick={handleCloseAlertDelete} color="primary">
             Hủy
           </Button>
-          <Button onClick={() => handleDeleteLendingBook()} color="primary">
+          <Button onClick={() => handleDeleteLendingBook()} color="danger">
             Đồng ý
           </Button>
         </DialogActions>
