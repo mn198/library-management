@@ -280,7 +280,7 @@ const BookLending = (props) => {
     // 
     const [ alertDelete, setAlertDelete ] = useState(false);
     const handleOpenAlertDelete = () => setAlertDelete(true);
-    const handlecloseAlertDelete = () => setAlertDelete(false);
+    const handleCloseAlertDelete = () => setAlertDelete(false);
 
     // reader choosen
     const [ openReaderChoosen, setOpenReaderChoosen ] = useState(false);
