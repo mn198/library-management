@@ -22,7 +22,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
@@ -151,7 +154,8 @@ const BookLending = (props) => {
         dueDate: '',
         returnDate: '3',
         snackbar_variant: '',
-        snackbar_message: ''
+        snackbar_message: '',
+        current_lendingId: ''
     })
 
     const handleChange = (e) => {
@@ -202,8 +206,16 @@ const BookLending = (props) => {
         })
     }
 
-    const handleDeleteLendingBook = (lendingId) => {
-      Axios.delete(config.base_url + '/lendings/' + lendingId)
+    const handleDeletePressed = (lendingId) => {
+      setValues(old => ({
+        ...old,
+        current_lendingId: lendingId
+      }))
+      handleOpenAlertDelete();
+    }
+
+    const handleDeleteLendingBook = () => {
+      Axios.delete(config.base_url + '/lendings/' + values.current_lendingId)
         .then((result) => {
           setValues(old => ({
             ...old,
@@ -264,6 +276,11 @@ const BookLending = (props) => {
     const handleReload = () => {
       getLendingList();
     }
+
+    // 
+    const [ alertDelete, setAlertDelete ] = useState(false);
+    const handleOpenAlertDelete = () => setAlertDelete(true);
+    const handlecloseAlertDelete = () => setAlertDelete(false);
 
     // reader choosen
     const [ openReaderChoosen, setOpenReaderChoosen ] = useState(false);
@@ -475,7 +492,7 @@ const BookLending = (props) => {
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Xóa">
-                      <IconButton onClick={() => handleDeleteLendingBook(l._id)}>
+                      <IconButton onClick={() => handleDeletePressed(l._id)}>
                         <DeleteIcon/>
                       </IconButton>
                     </Tooltip>
@@ -685,6 +702,28 @@ const BookLending = (props) => {
           </Container>
         </Paper>
         </Dialog>
+
+        <Dialog
+        open={alertDelete}
+        onClose={handleCloseAlertDelete}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Xác nhận!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Bạn có chắc muốn xóa thông tin giao dịch này ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseAlertDelete} color="primary">
+            Hủy
+          </Button>
+          <Button onClick={() => handleDeleteLendingBook()} color="primary">
+            Đồng ý
+          </Button>
+        </DialogActions>
+      </Dialog>
 
     </Paper>
     )

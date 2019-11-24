@@ -661,7 +661,9 @@ function Readers(props) {
           <Button onClick={handleCloseAlertDelete} color="primary">
             Hủy
           </Button>
-          <DeleteReaderButton/>
+          <Button onClick={handleDeleteReader} color="primary">
+            Đồng ý
+          </Button>
         </DialogActions>
       </Dialog>
 

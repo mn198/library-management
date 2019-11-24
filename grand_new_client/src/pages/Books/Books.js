@@ -23,7 +23,10 @@ import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import AddIcon from '@material-ui/icons/Add';
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
@@ -104,6 +107,11 @@ function Books(props) {
     const { classes } = props;
     const { book, dispatch } = useContext(bookContext);
 
+    // alert delete
+    const [ alertDelete, setAlertDelete ] = useState(false);
+    const handleOpenAlertDelete = () => setAlertDelete(true);
+    const handleCloseAlertDelete = () => setAlertDelete(false);
+
     // search
     const [ filter, setFilter ] = useState('');
     const [ filteredData, setFilterData] = useState(book.list);
@@ -143,7 +151,7 @@ function Books(props) {
     // button in modal
     const AddBookButton = () => (<Button color="success" onClick={handleAddBook}>Hoàn tất</Button>)
     const EditBookButton = () => (<Button color="success" onClick={handleEditBook}>Lưu</Button>)
-    const DeleteBookButton = () => (<Button color="danger" onClick={handleDeleteBook}>Xóa</Button>)
+    const DeleteBookButton = () => (<Button color="danger" onClick={handleOpenAlertDelete}>Xóa</Button>)
     // snackbar
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
     const handleCloseSnackbar = () => { setOpenSnackbar(false); };
@@ -667,6 +675,29 @@ function Books(props) {
         />
       </Snackbar>
       {/* end --- */}
+
+      <Dialog
+        open={alertDelete}
+        onClose={handleCloseAlertDelete}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Xác nhận!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Bạn có chắc muốn xóa thông tin quyển sách này ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseAlertDelete} color="primary">
+            Hủy
+          </Button>
+          <Button onClick={handleDeleteBook} color="primary">
+            Đồng ý
+          </Button>
+        </DialogActions>
+      </Dialog>
+
     </Paper>
     )
 
