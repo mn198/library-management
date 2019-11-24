@@ -336,6 +336,7 @@ function Readers(props) {
         }))
         setOpenSnackbar(true);
       })
+      handleCloseAlertDelete();
   }
   // handle when user press an user item in grid
   const handleEditPressed = (readerId) => {

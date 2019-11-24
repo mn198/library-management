@@ -234,6 +234,7 @@ const BookLending = (props) => {
           }))
           handleOpenSnackbar();
         })
+        handleCloseAlertDelete();
     }
 
     const handleAddLending = (e) => {

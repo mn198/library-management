@@ -19,7 +19,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
-import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import AddIcon from '@material-ui/icons/Add';
 import Dialog from '@material-ui/core/Dialog';
@@ -335,6 +334,7 @@ function Books(props) {
           handleOpenSnackbar();
           handleCloseModal();
         })
+        handleCloseAlertDelete();
     }
 
     const handleReload = () => {
@@ -692,7 +692,7 @@ function Books(props) {
           <Button onClick={handleCloseAlertDelete} color="primary">
             Hủy
           </Button>
-          <Button onClick={handleDeleteBook} color="primary">
+          <Button onClick={handleDeleteBook} color="danger">
             Đồng ý
           </Button>
         </DialogActions>
