@@ -122,7 +122,8 @@ const styles = theme => ({
         borderRadius: '8px'
       },
       mnGreen: {
-        color: '#66bb6a'
+        backgroundColor: '#66bb6a',
+        boxShadow: 'none'
       },
       mnMb: {
         marginBottom: theme.spacing(2)

@@ -129,9 +129,8 @@ export default function Landing(props){
                 <div className={classes.container}>
                     <Grid container>
                         <Grid item xs={12} sm={12} md={6}>
-                        <h1 className={classes.title}>uản lý thư viện</h1>
+                        <h1 className={classes.title}>Quản lý thư viện</h1>
                         <h4 className={classes.description}>
-                        Sách không đơn thuần chỉ là những trang giấy mà trong đó còn chứa đựng một thế giới mà con người luôn tò mò, luôn khao khát được khám phá.
                         </h4>
                         <br />
                         <Button

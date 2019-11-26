@@ -45,7 +45,7 @@ import BookSkeleton from './BookSkeleton';
 // contexts
 import { bookContext } from '../../contexts/BookContext';
 
-import bookIcon from "../../assets/img/flat-book-icon-11.jpg";
+import bookIcon from "../../assets/img/flat-book-icon-27.jpg";
 import Axios from 'axios';
 import config from '../../config/config';
 
