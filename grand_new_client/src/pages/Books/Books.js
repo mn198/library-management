@@ -23,12 +23,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+/*
 import StdCard from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
+*/
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
 import GridItem from "../../components/Grid/GridItem.js";
@@ -88,8 +89,8 @@ const styles = theme => ({
     },
     borderRadius: 0,
     bigAvatar: {
-      width: 130,
-      height: 130
+      width: 120,
+      height: 120
     },
     formControl: {
       marginTop: theme.spacing(3),
@@ -584,12 +585,12 @@ function Books(props) {
             <Card profile>
               <CardAvatar profile>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar src={bookIcon} className={classes.bigAvatar} variant="square"/>
+                  <Avatar  variant="square" src={bookIcon} className={classes.bigAvatar}/>
                 </a>
               </CardAvatar>
               <CardBody profile>
-                <Typography>b.title</Typography>
-                <Typography>b.author</Typography>
+                <Typography>{b.title}</Typography>
+                <Typography>{b.author}</Typography>
               </CardBody>
             </Card>
 

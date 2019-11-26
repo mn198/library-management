@@ -113,7 +113,11 @@ const styles = theme => ({
         fontWeight: '500',
         lineHeight: '1.6',
         letterSpacing: '0.0075em'
-      }
+      },
+      bigAvatar: {
+        width: 120,
+        height: 120
+      },
 })
 
 const useStyles = makeStyles(styles);
@@ -627,14 +631,14 @@ const BookLending = (props) => {
           <Grid item xs={12} md={4} key={b._id}>
           
           <Card profile>
-              <CardAvatar profile>
+              <CardAvatar profile onClick={() => handleCloseBookChoosen()}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar src={bookIcon} className={classes.bigAvatar} variant="square"/>
+                  <Avatar variant="square" src={bookIcon} className={classes.bigAvatar} />
                 </a>
               </CardAvatar>
               <CardBody profile>
-                <Typography>b.title</Typography>
-                <Typography>b.author</Typography>
+                <Typography>{b.title}</Typography>
+                <Typography>{b.author}</Typography>
               </CardBody>
             </Card>
 
