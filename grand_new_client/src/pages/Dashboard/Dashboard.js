@@ -30,22 +30,22 @@ const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
   const classes = useStyles();
-  const { book } = useContext(bookContext);
-  const { reader } = useContext(readerContext);
-  const { lending } = useContext(lendingContext);
+  const book = useContext(bookContext);
+  const reader = useContext(readerContext);
+  const lending = useContext(lendingContext);
 
   useEffect(() => {
     axios.get(config.base_url + '/books')
       .then((result) => {
-          dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
+          book.dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
       })
     axios.get(config.base_url + '/lendings')
     .then((result) => {
-        dispatch({ type: 'GET_LENGDING_LIST', payload: result.data})
+        lending.dispatch({ type: 'GET_LENGDING_LIST', payload: result.data})
     })
     axios.get(config.base_url + '/readers')
     .then((result) => {
-        dispatch({ type: 'GET_READER_LIST', payload: result.data})
+        reader.dispatch({ type: 'GET_READER_LIST', payload: result.data})
     })
   })
 
@@ -60,7 +60,7 @@ export default function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Đọc giả</p>
               <h3 className={classes.cardTitle}>
-                { reader.list.length } <small>Bạn đọc</small>
+                { reader.reader.list.length } <small>Bạn đọc</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -80,7 +80,7 @@ export default function Dashboard() {
                 <LibraryBooksIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Sách</p>
-              <h3 className={classes.cardTitle}>{book.list.length} <small>Quyển</small></h3>
+              <h3 className={classes.cardTitle}>{book.book.list.length} <small>Quyển</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -99,7 +99,7 @@ export default function Dashboard() {
                 <AccountBalanceWalletIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Mượn trả</p>
-              <h3 className={classes.cardTitle}>{ lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ lending.lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -118,7 +118,7 @@ export default function Dashboard() {
                 <HistoryIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Lịch sử mượn trả</p>
-              <h3 className={classes.cardTitle}>{ lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ lending.lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
