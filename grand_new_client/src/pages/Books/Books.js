@@ -297,6 +297,7 @@ function Books(props) {
           getBookList();
         })
         .catch((err) => {
+          console.log(err);
           setValues(old => ({
             ...old,
             snackbar_message: 'Đã có lỗi xảy ra trong quá trình thêm sách!',
@@ -581,7 +582,7 @@ function Books(props) {
                     <Card profile>
                       <CardAvatar profile>
                         <a href="#pablo" onClick={e => e.preventDefault()}>
-                          <Avatar imgProps={{id: 'book_image'}} className={classes.avatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
+                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
                         </a>
                       </CardAvatar>
                       <CardBody profile>
