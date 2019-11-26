@@ -118,6 +118,15 @@ const styles = theme => ({
         width: 120,
         height: 120
       },
+      mnSquare: {
+        borderRadius: '8px'
+      },
+      mnGreen: {
+        color: '#66bb6a'
+      },
+      mnMb: {
+        marginBottom: theme.spacing(2)
+      }
 })
 
 const useStyles = makeStyles(styles);
@@ -411,9 +420,9 @@ const BookLending = (props) => {
                               
                               <Grid item xs={12} md={4}>
                                 <Card profile>
-                                  <CardAvatar profile>
+                                  <CardAvatar profile className={classes.mnSquare}>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <Avatar src={bookIcon} className={classes.bigAvatar}/>
+                                      <Avatar src={bookIcon} className={classes.bigAvatar + ' ' + classes.mnGreen}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -438,7 +447,7 @@ const BookLending = (props) => {
                               
                               <Grid item xs={12} md={4}>
                                 <Card profile>
-                                  <CardAvatar plain>
+                                  <CardAvatar profile>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
                                       <DateRange className={classes.bigAvatar}/>
                                     </a>
@@ -626,12 +635,12 @@ const BookLending = (props) => {
         </AppBar>
         <Paper className={classes.modal_paper}>
           <Container>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} className={classes.mnMb}>
           { book.isLoading === false ? null : book.list.map((b) => ( 
           <Grid item xs={12} md={4} key={b._id}>
           
           <Card profile>
-              <CardAvatar profile onClick={() => handleCloseBookChoosen(b)}>
+              <CardAvatar profile onClick={() => handleBookChoosen(b)}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
                   <Avatar variant="square" src={bookIcon} className={classes.bigAvatar} />
                 </a>
