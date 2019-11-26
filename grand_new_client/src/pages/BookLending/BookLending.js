@@ -30,12 +30,13 @@ import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
 import DeleteIcon from '@material-ui/icons/Delete';
+/*
 import StdCard from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
+*/
 import Axios from 'axios';
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import config from '../../config/config';
@@ -623,31 +624,19 @@ const BookLending = (props) => {
           <Container>
             <Grid container>
           { book.isLoading === false ? null : book.list.map((b) => ( 
-          <Grid item key={b._id}>
+          <Grid item xs={12} md={4} key={b._id}>
           
-          <StdCard>
-            <CardActionArea>
-              <CardMedia
-                image={bookIcon}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {b.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {b.author}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small">
-                Share
-              </Button>
-              <Button size="small">
-                Learn More
-              </Button>
-            </CardActions>
-          </StdCard>
+          <Card profile>
+              <CardAvatar profile>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                  <Avatar src={bookIcon} className={classes.bigAvatar} variant="square"/>
+                </a>
+              </CardAvatar>
+              <CardBody profile>
+                <Typography>b.title</Typography>
+                <Typography>b.author</Typography>
+              </CardBody>
+            </Card>
 
           </Grid>
           ))}

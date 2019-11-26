@@ -126,6 +126,13 @@ const styles = theme => ({
   },
   bigger: {
     padding: theme.spacing(3)
+  },
+  mnTitle: {
+    fontSize: '1rem',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: '500',
+    lineHeight: '1.6',
+    letterSpacing: '0.0075em'
   }
 });
 
@@ -583,8 +590,7 @@ function Readers(props) {
                 primary={
                   <Typography
                       component="span"
-                      variant="h6"
-                      className={classes.inline}
+                      className={classes.inline + ' ' + classes.mnTitle}
                       color="textPrimary"
                     >
                        {rd.name}

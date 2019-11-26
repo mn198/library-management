@@ -12,7 +12,7 @@ import Accessibility from "@material-ui/icons/Accessibility";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import HistoryIcon from '@material-ui/icons/History';
-import AutorenewIcon from '@material-ui/icons/Autorenew';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // core components
 import GridItem from "../../components/Grid/GridItem.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -63,7 +63,7 @@ export default function Dashboard() {
               </CardIcon>
               <p className={classes.cardCategory}>Đọc giả</p>
               <h3 className={classes.cardTitle}>
-                { !reader.reader.isLoading ? <AutorenewIcon/> : reader.reader.list.length } <small>Bạn đọc</small>
+                { !reader.reader.isLoading ? <CircularProgress/> : reader.reader.list.length } <small>Bạn đọc</small>
               </h3>
             </CardHeader>
             <CardFooter stats>
@@ -83,7 +83,7 @@ export default function Dashboard() {
                 <LibraryBooksIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Sách</p>
-              <h3 className={classes.cardTitle}>{ !book.book.isLoading ? <AutorenewIcon/> : book.book.list.length} <small>Quyển</small></h3>
+              <h3 className={classes.cardTitle}>{ !book.book.isLoading ? <CircularProgress/> : book.book.list.length} <small>Quyển</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -102,7 +102,7 @@ export default function Dashboard() {
                 <AccountBalanceWalletIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Mượn trả</p>
-              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <AutorenewIcon/> : lending.lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress/> : lending.lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -121,7 +121,7 @@ export default function Dashboard() {
                 <HistoryIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Lịch sử mượn trả</p>
-              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <AutorenewIcon/> : lending.lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress/> : lending.lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>

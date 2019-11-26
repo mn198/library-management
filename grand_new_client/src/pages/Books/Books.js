@@ -581,30 +581,17 @@ function Books(props) {
         { book.isLoading === false ? <BookSkeleton/> : filteredData.map((b) => ( 
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
 
-            <StdCard className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={bookIcon}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {b.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    {b.author}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small">
-                  Share
-                </Button>
-                <Button size="small">
-                  Learn More
-                </Button>
-              </CardActions>
-            </StdCard>
+            <Card profile>
+              <CardAvatar profile>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                  <Avatar src={bookIcon} className={classes.bigAvatar} variant="square"/>
+                </a>
+              </CardAvatar>
+              <CardBody profile>
+                <Typography>b.title</Typography>
+                <Typography>b.author</Typography>
+              </CardBody>
+            </Card>
 
           </GridItem>
           ))}
