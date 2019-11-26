@@ -104,6 +104,16 @@ const styles = theme => ({
     },
     media: {
       height: 140,
+    },
+    mnTitle: {
+      fontSize: '1rem',
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: '500',
+      lineHeight: '1.6',
+      letterSpacing: '0.0075em'
+    },
+    mnSquare: {
+      borderRadius: '8px'
     }
 })
 
@@ -589,7 +599,7 @@ function Books(props) {
                 </a>
               </CardAvatar>
               <CardBody profile>
-                <Typography>{b.title}</Typography>
+                <Typography className={classes.mnTitle}>{b.title}</Typography>
                 <Typography>{b.author}</Typography>
               </CardBody>
             </Card>

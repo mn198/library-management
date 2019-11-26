@@ -438,7 +438,7 @@ const BookLending = (props) => {
                               
                               <Grid item xs={12} md={4}>
                                 <Card profile>
-                                  <CardAvatar profile>
+                                  <CardAvatar plain>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
                                       <DateRange className={classes.bigAvatar}/>
                                     </a>
@@ -626,12 +626,12 @@ const BookLending = (props) => {
         </AppBar>
         <Paper className={classes.modal_paper}>
           <Container>
-            <Grid container>
+            <Grid container spacing={3}>
           { book.isLoading === false ? null : book.list.map((b) => ( 
           <Grid item xs={12} md={4} key={b._id}>
           
           <Card profile>
-              <CardAvatar profile onClick={() => handleCloseBookChoosen()}>
+              <CardAvatar profile onClick={() => handleCloseBookChoosen(b)}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
                   <Avatar variant="square" src={bookIcon} className={classes.bigAvatar} />
                 </a>
