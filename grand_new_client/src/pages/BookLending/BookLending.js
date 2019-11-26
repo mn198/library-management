@@ -121,12 +121,11 @@ const styles = theme => ({
       mnSquare: {
         borderRadius: '8px'
       },
-      mnGreen: {
-        backgroundColor: '#66bb6a',
+      mnNoBoxShadow: {
         boxShadow: 'none'
       },
-      mnMb: {
-        marginBottom: theme.spacing(2)
+      mnMt: {
+        marginTop: theme.spacing(2)
       }
 })
 
@@ -423,7 +422,7 @@ const BookLending = (props) => {
                                 <Card profile>
                                   <CardAvatar profile className={classes.mnSquare}>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <Avatar src={bookIcon} className={classes.bigAvatar + ' ' + classes.mnGreen}/>
+                                      <Avatar src={bookIcon} className={classes.bigAvatar}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -448,9 +447,9 @@ const BookLending = (props) => {
                               
                               <Grid item xs={12} md={4}>
                                 <Card profile>
-                                  <CardAvatar profile>
+                                  <CardAvatar profile className={classes.mnNoBoxShadow}>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <DateRange className={classes.bigAvatar}/>
+                                      <DateRange color="primary" className={classes.bigAvatar}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -636,7 +635,7 @@ const BookLending = (props) => {
         </AppBar>
         <Paper className={classes.modal_paper}>
           <Container>
-            <Grid container spacing={3} className={classes.mnMb}>
+            <Grid container spacing={3} className={classes.mnMt}>
           { book.isLoading === false ? null : book.list.map((b) => ( 
           <Grid item xs={12} md={4} key={b._id}>
           

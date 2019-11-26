@@ -87,7 +87,6 @@ const styles = theme => ({
       marginBottom: "3px",
       textDecoration: "none"
     },
-    borderRadius: 0,
     bigAvatar: {
       width: 120,
       height: 120
