@@ -106,7 +106,6 @@ const styles = theme => ({
 function Books(props) {
     const { classes } = props;
     const { book, dispatch } = useContext(bookContext);
-    console.log(book);
     // alert delete
     const [ alertDelete, setAlertDelete ] = useState(false);
     const handleOpenAlertDelete = () => setAlertDelete(true);
@@ -583,7 +582,7 @@ function Books(props) {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image={b.image}
+                  image={bookIcon}
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -596,10 +595,10 @@ function Books(props) {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small">
                   Share
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small">
                   Learn More
                 </Button>
               </CardActions>

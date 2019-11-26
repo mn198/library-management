@@ -5,6 +5,7 @@ import DateFnsUtils from '@date-io/date-fns';
 // moment
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/vi';
 
 // contexts
 import { readerContext } from '../../contexts/ReaderContext';
@@ -131,6 +132,7 @@ const styles = theme => ({
 
 function Readers(props) {
   const { classes } = props;
+  dayjs.locale('vi');
   dayjs.extend(relativeTime);
   const { reader, dispatch } = useContext(readerContext);
 
@@ -585,26 +587,18 @@ function Readers(props) {
                       className={classes.inline}
                       color="textPrimary"
                     >
-                      Barcode: {' ' + rd._id}
+                       {rd.name}
                     </Typography>
                 }
                 secondary={
                   <React.Fragment>
                     <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {rd.name}
-                    </Typography>
-                    <Typography
                       className={classes.inline}
                       component="span"
                       variant="body2"
                       color="textPrimary"
                     >
-                      {' - ' + rd.email}
+                      {rd.email}
                     </Typography>
                     <Typography
                       className={classes.block}
