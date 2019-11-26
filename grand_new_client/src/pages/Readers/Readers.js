@@ -583,7 +583,7 @@ function Readers(props) {
                 primary={
                   <Typography
                       component="span"
-                      variant="body2"
+                      variant="h6"
                       className={classes.inline}
                       color="textPrimary"
                     >

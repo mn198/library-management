@@ -52,55 +52,58 @@ const styles = theme => ({
     paper: {
         margin: 'auto',
         overflow: 'hidden',
-      },
-      searchBar: {
-        borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-      },
-      searchInput: {
-        fontSize: theme.typography.fontSize,
-      },
-      block: {
-        display: 'block',
-      },
-      contentWrapper: {
-        margin: '40px 16px',
-      },
-      modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      cardCategoryWhite: {
-        color: "rgba(255,255,255,.62)",
-        margin: "0",
-        fontSize: "14px",
-        marginTop: "0",
-        marginBottom: "0"
-      },
-      cardTitleWhite: {
-        color: "#FFFFFF",
-        marginTop: "0px",
-        minHeight: "auto",
-        fontWeight: "300",
-        fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-        marginBottom: "3px",
-        textDecoration: "none"
-      },
-      borderRadius: 0,
-      bigAvatar: {
-        width: 130,
-        height: 130
-      },
-      formControl: {
-        marginTop: theme.spacing(3),
-        minWidth: '100%',
-      },
-      weightedFont: {
-        fontWeight: '500'
-      },
-      bigger: {
-        padding: theme.spacing(3)
-      }
+    },
+    searchBar: {
+      borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    },
+    searchInput: {
+      fontSize: theme.typography.fontSize,
+    },
+    block: {
+      display: 'block',
+    },
+    contentWrapper: {
+      margin: '40px 16px',
+    },
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    cardCategoryWhite: {
+      color: "rgba(255,255,255,.62)",
+      margin: "0",
+      fontSize: "14px",
+      marginTop: "0",
+      marginBottom: "0"
+    },
+    cardTitleWhite: {
+      color: "#FFFFFF",
+      marginTop: "0px",
+      minHeight: "auto",
+      fontWeight: "300",
+      fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+      marginBottom: "3px",
+      textDecoration: "none"
+    },
+    borderRadius: 0,
+    bigAvatar: {
+      width: 130,
+      height: 130
+    },
+    formControl: {
+      marginTop: theme.spacing(3),
+      minWidth: '100%',
+    },
+    weightedFont: {
+      fontWeight: '500'
+    },
+    bigger: {
+      padding: theme.spacing(3)
+    },
+    media: {
+      height: 140,
+    }
 })
 
 function Books(props) {
@@ -578,12 +581,11 @@ function Books(props) {
         { book.isLoading === false ? <BookSkeleton/> : filteredData.map((b) => ( 
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
 
-            <Card className={classes.card}>
+            <StdCard className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
                   image={bookIcon}
-                  title="Contemplative Reptile"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
@@ -602,7 +604,7 @@ function Books(props) {
                   Learn More
                 </Button>
               </CardActions>
-            </Card>
+            </StdCard>
 
           </GridItem>
           ))}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 // react plugin for creating charts
 import { NavLink } from "react-router-dom";
 import ChartistGraph from "react-chartist";
@@ -18,18 +18,11 @@ import GridContainer from "../../components/Grid/GridContainer.js";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
-import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 
 import { bookContext } from '../../contexts/BookContext';
 import { readerContext } from '../../contexts/ReaderContext';
 import { lendingContext } from '../../contexts/LendingContext';
-
-import {
-  dailySalesChart,
-  emailsSubscriptionChart,
-  completedTasksChart
-} from "../../variables/charts.js";
 
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
@@ -40,6 +33,21 @@ export default function Dashboard() {
   const { book } = useContext(bookContext);
   const { reader } = useContext(readerContext);
   const { lending } = useContext(lendingContext);
+
+  useEffect(() => {
+    axios.get(config.base_url + '/books')
+      .then((result) => {
+          dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
+      })
+    axios.get(config.base_url + '/lendings')
+    .then((result) => {
+        dispatch({ type: 'GET_LENGDING_LIST', payload: result.data})
+    })
+    axios.get(config.base_url + '/readers')
+    .then((result) => {
+        dispatch({ type: 'GET_READER_LIST', payload: result.data})
+    })
+  })
 
   return (
     <div>

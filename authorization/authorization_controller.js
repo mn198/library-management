@@ -16,7 +16,6 @@ exports.login = (req, res) => {
 
         res.status(201).send({ accessToken: token, refresh_token: refresh_token });
     } catch(err) {
-        console.log(err);
         res.status(500).send({errors: 'invalid email or password'})
     }
 }

@@ -13,6 +13,7 @@ const AuthContextProvider = (props) => {
 
     const [auth, dispatch] = useReducer(authReducer, initState);
 
+
     useEffect(() => {
         if(localStorage.jwtToken){
             const token = localStorage.jwtToken;
@@ -22,6 +23,7 @@ const AuthContextProvider = (props) => {
             dispatch({ type: 'LOGIN', payload: decoded });
         }
     }, []);
+
 
     return(
         <authContext.Provider value={{auth, dispatch}}>

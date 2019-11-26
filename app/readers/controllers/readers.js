@@ -8,7 +8,6 @@ const dUri = new Datauri();
 const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
 
 exports.create = (req, res) => {
-    console.log(req.body);
     if(req.file) {
         const file = dataUri(req).content;
         return uploader.upload(file).then( async (result) => {
@@ -22,7 +21,6 @@ exports.create = (req, res) => {
             
           })
         }).catch((err) => {
-            console.log(err);
             res.status(400).json({
           messge: 'someting went wrong while processing your request',
           data: {
@@ -70,7 +68,6 @@ exports.update = (req, res) => {
             
           })
         }).catch((err) => {
-            console.log(err);
             res.status(400).json({
           messge: 'someting went wrong while processing your request',
           data: {
@@ -84,7 +81,6 @@ exports.update = (req, res) => {
                 res.status(201).send(result);
             })
             .catch((err) => {
-                console.log(err);
                 res.status(400).send(err);
             })
        }
