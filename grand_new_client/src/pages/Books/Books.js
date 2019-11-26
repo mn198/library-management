@@ -11,9 +11,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from '@material-ui/core/Select';
@@ -26,6 +23,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import StdCard from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
@@ -37,7 +39,6 @@ import CardAvatar from "../../components/Card/CardAvatar.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
-import Badge from '../../components/Badge/Badge';
 import BookSkeleton from './BookSkeleton';
 
 // contexts
@@ -105,7 +106,7 @@ const styles = theme => ({
 function Books(props) {
     const { classes } = props;
     const { book, dispatch } = useContext(bookContext);
-
+    console.log(book);
     // alert delete
     const [ alertDelete, setAlertDelete ] = useState(false);
     const handleOpenAlertDelete = () => setAlertDelete(true);
@@ -577,82 +578,33 @@ function Books(props) {
 
         { book.isLoading === false ? <BookSkeleton/> : filteredData.map((b) => ( 
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
-          <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar alt="avatar" src={bookIcon}/>
-              </ListItemAvatar>
-              <ListItemText
-                primary= {'Tên sách: ' + b.title}
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                     ISBN:{' ' + b._id}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Tác giả: {' ' + b.author}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Số trang: {' ' + b.numberOfPages}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Vị trí: {' ' + b.rack}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Trạng thái: <Badge color={b.status === 'Available' ? "success" : "danger"}>{' ' + bookStatus[b.status]}</Badge>
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Thể loại: <Badge color="info">{' ' + bookFormat[b.format]}</Badge>
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Nhà xuất bản: {' ' + b.publisher}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Năm xuất bản: {' ' + b.publicationYear}
-                    </Typography>
-                  </React.Fragment>                  
-                }
-              />
-            </ListItem>
+
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={b.image}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {b.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {b.author}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Share
+                </Button>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+
           </GridItem>
           ))}
 
