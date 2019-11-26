@@ -48,7 +48,7 @@ exports.update = (req, res) => {
           const image = await result.url;
           req.body.image = await image;
 
-          await ReaderModel.update(req.params.bookId, req.body);
+          await BookModel.update(req.params.bookId, req.body);
 
           return await res.status(200).json({
             messge: 'Your image has been uploded successfully to cloudinary',
