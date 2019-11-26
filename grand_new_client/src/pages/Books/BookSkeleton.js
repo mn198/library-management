@@ -25,9 +25,9 @@ function BookSkeleton(props){
         
             <Grid item xs={12} md={4} key={index}>
             <Card profile>
-              <CardAvatar profile className={classes.mnSquare}>
+              <CardAvatar profile>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Skeleton variant="circle" width={120} height={120}/>
+                  <Skeleton variant="square" width={120} height={120}/>
                 </a>
               </CardAvatar>
               <CardBody profile>

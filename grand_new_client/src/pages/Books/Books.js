@@ -623,7 +623,7 @@ function Books(props) {
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
 
             <Card profile>
-              <CardAvatar profile className={classes.mnSquare}>
+              <CardAvatar profile>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
                   <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
                 </a>
