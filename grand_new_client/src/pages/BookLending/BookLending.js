@@ -30,6 +30,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
 import DeleteIcon from '@material-ui/icons/Delete';
+import StdCard from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
 import Axios from 'axios';
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
@@ -100,6 +105,13 @@ const styles = theme => ({
       },
       bigger: {
         minWidth: 130
+      },
+      mnTitle: {
+        fontSize: '1rem',
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        fontWeight: '500',
+        lineHeight: '1.6',
+        letterSpacing: '0.0075em'
       }
 })
 
@@ -386,7 +398,7 @@ const BookLending = (props) => {
                                       }}
                                     />
                                     <Button color="primary" round onClick={handleOpenReaderChoosen}>
-                                      Tìm đọc giả
+                                      Chọn đọc giả
                                     </Button>
                                   </CardBody>
                                 </Card>
@@ -413,7 +425,7 @@ const BookLending = (props) => {
                                       }}
                                     />
                                     <Button color="primary" round onClick={handleOpenBookChoosen}>
-                                      Tìm sách
+                                      Chọn sách
                                     </Button>
                                   </CardBody>
                                 </Card>
@@ -554,30 +566,21 @@ const BookLending = (props) => {
                 primary={
                   <Typography
                       component="span"
-                      variant="body2"
-                      className={classes.inline + ' ' + classes.hide}
+                      className={classes.inline + ' ' + classes.mnTitle}
                       color="textPrimary"
                     >
-                      Barcode: {' ' + rd._id}
+                      {rd.name}
                     </Typography>
                 }
                 secondary={
                   <React.Fragment>
                     <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {rd.name}
-                    </Typography>
-                    <Typography
                       className={classes.inline}
                       component="span"
                       variant="body2"
                       color="textPrimary"
                     >
-                      {' - ' + rd.email}
+                      {rd.email}
                     </Typography>
                     <Typography
                       className={classes.block}
@@ -621,82 +624,31 @@ const BookLending = (props) => {
             <Grid container>
           { book.isLoading === false ? null : book.list.map((b) => ( 
           <Grid item key={b._id}>
-          <ListItem alignItems="flex-start">
-              <ListItemAvatar onClick={() => handleBookChoosen(b)}>
-                <Avatar alt="avatar" src={bookIcon} classes={classes.border}/>
-              </ListItemAvatar>
-              <ListItemText
-                primary={'ISBN: ' + b._id}
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Tên sách: {' ' + b.title}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Tác giả: {' ' + b.author}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Số trang: {' ' + b.numberOfPages}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Vị trí: {' ' + b.rack}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Trạng thái: <Badge color={b.status === 'Available' ? "success" : "danger"}>{' ' + bookStatus[b.status]}</Badge>
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Thể loại: <Badge color="info">{' ' + bookFormat[b.format]}</Badge>
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Nhà xuất bản: {' ' + b.publisher}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      color="textPrimary"
-                      className={classes.block}
-                    >
-                      Năm xuất bản: {' ' + b.publicationYear}
-                    </Typography>
-                  </React.Fragment>                  
-                }
+          
+          <StdCard>
+            <CardActionArea>
+              <CardMedia
+                image={bookIcon}
               />
-            </ListItem>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {b.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {b.author}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small">
+                Share
+              </Button>
+              <Button size="small">
+                Learn More
+              </Button>
+            </CardActions>
+          </StdCard>
+
           </Grid>
           ))}
             </Grid>
