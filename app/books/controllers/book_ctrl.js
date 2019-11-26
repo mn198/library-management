@@ -10,6 +10,7 @@ const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(
 exports.create = (req, res) => {
 
     if(req.file) {
+        console.log('get image')
         const file = dataUri(req).content;
         return uploader.upload(file).then( async (result) => {
           const image = await result.url;
@@ -30,6 +31,7 @@ exports.create = (req, res) => {
         })})
         
        } else {
+            console.log('have no image')
         BookModel.create(req.body)
             .then((result) => {
                 res.status(201).send(result);
