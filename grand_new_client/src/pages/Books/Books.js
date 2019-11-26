@@ -280,7 +280,7 @@ function Books(props) {
       formData.append('format', values.format);
       formData.append('publisher', values.publisher);
       formData.append('publicationYear', values.publicationYear);
-      formData.append('image', values.book_image);
+      formData.append('book_image', values.book_image);
 
       Axios.post(config.base_url + '/books', formData, {
         headers: {
