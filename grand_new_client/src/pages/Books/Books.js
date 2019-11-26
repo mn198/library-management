@@ -322,7 +322,7 @@ function Books(props) {
       formData.append('publisher', values.publisher);
       formData.append('publicationYear', values.publicationYear);
       formData.append('book_image', values.book_image);
-      
+
       Axios.patch(config.base_url + '/books/' + values.current_book, formData, {
         headers: {
         'Content-Type': 'multipart/form-data',
@@ -583,7 +583,7 @@ function Books(props) {
                     <Card profile>
                       <CardAvatar profile>
                         <a href="#pablo" onClick={e => e.preventDefault()}>
-                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
+                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar + ' ' + classes.mnSquare} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
                         </a>
                       </CardAvatar>
                       <CardBody profile>

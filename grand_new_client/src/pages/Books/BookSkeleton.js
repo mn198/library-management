@@ -1,9 +1,9 @@
 import React from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Grid from '@material-ui/core/Grid';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Card from "../../components/Card/Card.js";
+import CardAvatar from "../../components/Card/CardAvatar.js";
+import CardBody from "../../components/Card/CardBody.js";
 //import { withStyles } from '@material-ui/core/styles';
 /*
 const styles = theme => ({
@@ -24,25 +24,17 @@ function BookSkeleton(props){
             repeat.map((index) =>  (
         
             <Grid item xs={12} md={4} key={index}>
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Skeleton variant="circle" width={60} height={60}/>
-              </ListItemAvatar>
-              <ListItemText
-                secondaryTypographyProps={{component: "div"}}
-                primary={
-                    <React.Fragment>
-                      <Skeleton height={9} width="90%"/>
-                    </React.Fragment>
-                }
-                secondary={
-                  <React.Fragment>
-                      <Skeleton height={9} width="50%"/>
-                      <Skeleton height={9} width="40%"/>
-                    </React.Fragment>
-                }
-              />
-            </ListItem>
+            <Card profile>
+              <CardAvatar profile className={classes.mnSquare}>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                  <Skeleton variant="circle" width={120} height={120}/>
+                </a>
+              </CardAvatar>
+              <CardBody profile>
+                <Skeleton height={9} width="100%"/>
+                <Skeleton height={9} width="70%"/>
+              </CardBody>
+            </Card>
             </Grid>
         ))
     )
