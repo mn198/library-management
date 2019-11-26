@@ -7,7 +7,7 @@ var upload = multer({ storage: storage});
 exports.routesConfig = (app) => {
     app.post('/books',[
         ValidationMiddleware.validJWTNeeded,
-        upload.single('avatar'),
+        upload.single('book_image'),
         BookController.create
     ])
 

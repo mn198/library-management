@@ -113,7 +113,10 @@ const styles = theme => ({
     },
     mnSquare: {
       borderRadius: '8px'
-    }
+    },
+    none: {
+      display: 'none'
+    },
 })
 
 function Books(props) {
@@ -150,8 +153,6 @@ function Books(props) {
         })
     }, [])
 
-    const bookFormat = {'Magazine': 'Tạp chí', 'Journal': 'Nhật ký', 'Ebook': 'Sách điện tử', 'Newspaper': 'Báo', 'Audiobook': 'Sách nói'};
-    const bookStatus = {'Available': 'Hiện còn', 'Loaned': 'Đang được mượn', 'Lost': 'Mất', 'Reserved': 'Đã được đặt'}
     const getBookList = () => {
       Axios.get(config.base_url + '/books')
         .then((result) => {
@@ -159,7 +160,17 @@ function Books(props) {
             setFilterData(result.data)
         })
     }
-
+    // image preview
+    const handleImageChange = (e) => {
+      let imgPreview = document.getElementById("book_image");
+      if(imgPreview){
+        imgPreview.src = URL.createObjectURL(e.target.files[0])
+      }
+      setValues((oldValues) => ({
+        ...oldValues,
+        book_image: e.target.files[0]
+      }))
+    }
     // button in modal
     const AddBookButton = () => (<Button color="success" onClick={handleAddBook}>Hoàn tất</Button>)
     const EditBookButton = () => (<Button color="success" onClick={handleEditBook}>Lưu</Button>)
@@ -191,6 +202,8 @@ function Books(props) {
       button: 1,
       current_book: '',
       form_title: '',
+      book_image_link: '',
+      book_image: null
     })
 
     const setDefaultValues = () => {
@@ -207,7 +220,9 @@ function Books(props) {
       publicationYear: '',
       button: 1,
       current_book: '',
-      form_title: 'Thêm sách mới'
+      form_title: 'Thêm sách mới',
+      book_image_link: '',
+      book_image: null
       }))
     }
 
@@ -238,7 +253,10 @@ function Books(props) {
             publicationYear: result.data[0].publicationYear,
             button: 2,
             current_book: result.data[0]._id,
-            form_title: 'Chỉnh sửa thông tin sách'
+            form_title: 'Chỉnh sửa thông tin sách',
+            book_image_link: result.data[0].image ? result.data[0].image : '',
+            book_image: result.data[0].image ? result.data[0].image : null,
+
           }))
         })
         handleOpenModal();
@@ -262,6 +280,7 @@ function Books(props) {
       formData.append('format', values.format);
       formData.append('publisher', values.publisher);
       formData.append('publicationYear', values.publicationYear);
+      formData.append('image', values.book_image);
 
       Axios.post(config.base_url + '/books', formData, {
         headers: {
@@ -562,13 +581,23 @@ function Books(props) {
                     <Card profile>
                       <CardAvatar profile>
                         <a href="#pablo" onClick={e => e.preventDefault()}>
-                          <Avatar src={bookIcon} className={classes.bigAvatar}/>
+                          <Avatar imgProps={{id: 'book_image'}} className={classes.avatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
                         </a>
                       </CardAvatar>
                       <CardBody profile>
-                        <Button color="primary" round>
-                          Đổi ảnh
-                        </Button>
+                        <input
+                          accept="image/*"
+                          name="image"
+                          className={classes.none}
+                          id="image"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <label htmlFor="image">
+                          <Button round component="span" className={classes.button}>
+                            Đổi ảnh
+                          </Button>
+                        </label>
                       </CardBody>
                     </Card>
                   </GridItem>
@@ -594,7 +623,7 @@ function Books(props) {
             <Card profile>
               <CardAvatar profile className={classes.mnSquare}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar  variant="square" src={bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
+                  <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
                 </a>
               </CardAvatar>
               <CardBody profile>

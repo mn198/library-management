@@ -46,7 +46,7 @@ const bookSchema = new Schema({
     publicationYear: {
         type: String
     },
-    picture: {
+    image: {
         type: String
     },
     rack: { type: Schema.Types.ObjectId }
