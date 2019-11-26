@@ -10,7 +10,6 @@ const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(
 exports.create = (req, res) => {
 
     if(req.file) {
-        console.log('get image')
         const file = dataUri(req).content;
         return uploader.upload(file).then( async (result) => {
           const image = await result.url;
@@ -31,7 +30,6 @@ exports.create = (req, res) => {
         })})
         
        } else {
-            console.log('have no image')
         BookModel.create(req.body)
             .then((result) => {
                 res.status(201).send(result);
@@ -43,13 +41,37 @@ exports.create = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    BookModel.update(req.params.bookId, req.body)
-        .then((result) => {
-            res.status(201).send(result);
-        })
-        .catch((err) => {
-            res.status(400).send(err)
-        })
+    
+    if(req.file) {
+        const file = dataUri(req).content;
+        return uploader.upload(file).then( async (result) => {
+          const image = await result.url;
+          req.body.image = await image;
+
+          await ReaderModel.update(req.params.bookId, req.body);
+
+          return await res.status(200).json({
+            messge: 'Your image has been uploded successfully to cloudinary',
+            
+          })
+        }).catch((err) => {
+            res.status(400).json({
+          messge: 'someting went wrong while processing your request',
+          data: {
+            err
+          }
+        })})
+        
+       } else {
+        BookModel.update(req.params.bookId, req.body)
+            .then((result) => {
+                res.status(201).send(result);
+            })
+            .catch((err) => {
+                res.status(400).send(err)
+            })
+       }
+
 }
 
 exports.list = (req, res) => {

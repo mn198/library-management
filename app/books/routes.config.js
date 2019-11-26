@@ -28,7 +28,7 @@ exports.routesConfig = (app) => {
 
     app.patch('/books/:bookId', [
         ValidationMiddleware.validJWTNeeded,
-        upload.single('avatar'),
+        upload.single('book_image'),
         BookController.update
     ])
 

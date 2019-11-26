@@ -321,7 +321,8 @@ function Books(props) {
       formData.append('format', values.format);
       formData.append('publisher', values.publisher);
       formData.append('publicationYear', values.publicationYear);
-
+      formData.append('book_image', values.book_image);
+      
       Axios.patch(config.base_url + '/books/' + values.current_book, formData, {
         headers: {
         'Content-Type': 'multipart/form-data',
