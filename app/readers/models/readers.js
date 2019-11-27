@@ -14,7 +14,10 @@ const readerSchema = new Schema({
     email: String,
     introduce: String,
     address: String,
-    isDeleted: Boolean
+    isDeleted: {
+        type: Boolean,
+        default: false
+    },
 }, { timestamps: true });
 
 const Readers = mongoose.model('Readers', readerSchema);

@@ -49,7 +49,8 @@ const bookSchema = new Schema({
         type: String
     },
     isDeleted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     rack: { type: Schema.Types.ObjectId }
 }, { timestamps: true })
