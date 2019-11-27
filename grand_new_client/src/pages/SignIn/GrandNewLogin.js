@@ -199,7 +199,7 @@ export default function LoginPage(props) {
       <Header
         absolute
         color="transparent"
-        brand="Material Kit React"
+        brand="Thư Viện Tỉnh Kiên Giang"
         rightLinks={<HeaderLinks />}
         {...rest}
       />
@@ -243,7 +243,6 @@ export default function LoginPage(props) {
                       </Button>
                     </div>
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
                   <CardBody>
                     <CustomInput
                       labelText="Email..."
@@ -263,7 +262,7 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
-                      labelText="Password"
+                      labelText="Mật khẩu"
                       id="pass"
                       formControlProps={{
                         fullWidth: true
@@ -284,7 +283,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg" onClick={() => handleSubmit()}>
+                    <Button simple color="primary" size="lg" onClick={(e) => handleSubmit(e)}>
                       Bắt đầu!
                     </Button>
                   </CardFooter>
