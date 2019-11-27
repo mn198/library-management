@@ -52,7 +52,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import avatar from "../../assets/img/new_logo.png";
+import avatar from "../../assets/img/tim_512x512.png";
 import ReaderSkeleton from './ReaderSkeleton';
 import config from '../../config/config';
 

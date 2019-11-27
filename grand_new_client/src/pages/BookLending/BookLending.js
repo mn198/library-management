@@ -59,7 +59,7 @@ import 'dayjs/locale/vi';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import bookIcon from "../../assets/img/flat-book-icon-11.jpg";
-import avatar from "../../assets/img/new_logo.png";
+import avatar from "../../assets/img/tim_512x512.png";
 
 const styles = theme => ({
     paper: {
@@ -572,8 +572,8 @@ const BookLending = (props) => {
           <React.Fragment key={rd._id} >
               <Grid item xs={12} md={4}>
             <ListItem alignItems="flex-start">
-              <ListItemAvatar onClick={() => handleReaderChoosen(rd._id)}>
-                <Avatar alt="avatar" src={rd.avatar ? rd.avatar : avatar} className={classes.pointer}/>
+              <ListItemAvatar onClick={() => handleReaderChoosen(rd._id) } className={classes.pointer}>
+                <Avatar alt="avatar" src={rd.avatar ? rd.avatar : avatar} />
               </ListItemAvatar>
               <ListItemText
                 className={classes.pointer}
@@ -642,7 +642,7 @@ const BookLending = (props) => {
           <Card profile>
               <CardAvatar profile onClick={() => handleBookChoosen(b)} className={classes.mnSquare + ' ' + classes.pointer}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar  src={b.image ? b.image : bookIcon} className={classes.bigAvatar} />
+                  <Avatar  src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' '+ classes.mnSquare } />
                 </a>
               </CardAvatar>
               <CardBody profile>

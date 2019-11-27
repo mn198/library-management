@@ -583,7 +583,7 @@ function Books(props) {
                     <Card profile>
                       <CardAvatar profile className={classes.mnSquare}>
                         <a href="#pablo" onClick={e => e.preventDefault()}>
-                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
+                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar + ' ' + classes.mnSquare} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
                         </a>
                       </CardAvatar>
                       <CardBody profile>
@@ -625,7 +625,7 @@ function Books(props) {
             <Card profile>
               <CardAvatar profile className={classes.mnSquare}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar}/>
+                  <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
                 </a>
               </CardAvatar>
               <CardBody profile>
