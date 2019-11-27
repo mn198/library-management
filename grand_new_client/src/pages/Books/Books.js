@@ -581,9 +581,9 @@ function Books(props) {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={4}>
                     <Card profile>
-                      <CardAvatar profile>
+                      <CardAvatar profile className={classes.mnSquare}>
                         <a href="#pablo" onClick={e => e.preventDefault()}>
-                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar + ' ' + classes.mnSquare} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
+                          <Avatar imgProps={{id: 'book_image'}} className={classes.bigAvatar} src={values.book_image_link ? values.book_image_link : bookIcon} alt='...' />
                         </a>
                       </CardAvatar>
                       <CardBody profile>
@@ -623,9 +623,9 @@ function Books(props) {
           <GridItem key={b._id} xs={12} md={4} onClick={() => handleEditPressed(b._id)}>
 
             <Card profile>
-              <CardAvatar profile>
+              <CardAvatar profile className={classes.mnSquare}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
+                  <Avatar  variant="square" src={b.image ? b.image : bookIcon} className={classes.bigAvatar}/>
                 </a>
               </CardAvatar>
               <CardBody profile>
