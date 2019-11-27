@@ -58,7 +58,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import bookIcon from "../../assets/img/flat-book-icon-11.jpg";
+import bookIcon from "../../assets/img/flat-book-icon-27.jpg";
 import avatar from "../../assets/img/tim_512x512.png";
 
 const styles = theme => ({
@@ -126,6 +126,9 @@ const styles = theme => ({
       },
       mnMt: {
         marginTop: theme.spacing(2)
+      },
+      pointer: {
+        cursor: 'pointer'
       }
 })
 
@@ -181,7 +184,9 @@ const BookLending = (props) => {
         returnDate: '3',
         snackbar_variant: '',
         snackbar_message: '',
-        current_lendingId: ''
+        current_lendingId: '',
+        reader_avatar: '',
+        book_image: ''
     })
 
     const handleChange = (e) => {
@@ -316,7 +321,8 @@ const BookLending = (props) => {
     const handleReaderChoosen = (reader) => {
       setValues(oldValues => ({
         ...oldValues,
-        readerID: reader
+        readerID: reader,
+        reader_avatar: reader.avatar
       }))
       handleCloseReaderChoosen();
     }
@@ -335,7 +341,8 @@ const BookLending = (props) => {
       } else {
         setValues(oldValues => ({
           ...oldValues,
-          bookID: book._id
+          bookID: book._id,
+          book_image: book.image
         }))
         handleCloseBookChoosen();
       }
@@ -344,9 +351,6 @@ const BookLending = (props) => {
     useEffect(() => {
         getLendingList();
     }, [])
-
-    const bookFormat = {'Magazine': 'Tạp chí', 'Journal': 'Nhật ký', 'Ebook': 'Sách điện tử', 'Newspaper': 'Báo', 'Audiobook': 'Sách nói'};
-    const bookStatus = {'Available': 'Hiện còn', 'Loaned': 'Đang được mượn', 'Lost': 'Mất', 'Reserved': 'Đã được đặt'}
 
     return (
     <Paper className={classes.paper}>
@@ -395,7 +399,7 @@ const BookLending = (props) => {
                                 <Card profile>
                                   <CardAvatar profile>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <Avatar src={avatar} className={classes.bigAvatar}/>
+                                      <Avatar src={values.reader_avatar ? values.reader_avatar : avatar} className={classes.bigAvatar}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -422,7 +426,7 @@ const BookLending = (props) => {
                                 <Card profile>
                                   <CardAvatar profile className={classes.mnSquare}>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <Avatar src={bookIcon} className={classes.bigAvatar}/>
+                                      <Avatar src={values.book_image ? values.book_image : bookIcon} className={classes.bigAvatar}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -640,7 +644,7 @@ const BookLending = (props) => {
           <Grid item xs={12} md={4} key={b._id}>
           
           <Card profile>
-              <CardAvatar profile onClick={() => handleBookChoosen(b)} className={classes.mnSquare + ' ' + classes.pointer}>
+              <CardAvatar profile onClick={() => handleBookChoosen(b)} className={classes.mnSquare}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
                   <Avatar  src={b.image ? b.image : bookIcon} className={classes.bigAvatar + ' '+ classes.mnSquare } />
                 </a>

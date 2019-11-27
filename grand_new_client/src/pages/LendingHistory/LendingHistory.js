@@ -122,6 +122,7 @@ const LendingHistory = (props) => {
             snackbar_message: 'Đã xóa lịch sử giao dịch vừa chọn !',
             snackbar_variant: 'success'
           }))
+          handleReload();
           handleOpenSnackbar();
         })
     }
