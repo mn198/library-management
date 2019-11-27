@@ -48,7 +48,7 @@ const bookSchema = new Schema({
     image: {
         type: String
     },
-    isDelete: {
+    isDeleted: {
         type: Boolean
     },
     rack: { type: Schema.Types.ObjectId }
@@ -64,7 +64,7 @@ exports.create = (bookData) => {
 exports.list = () => {
     return new Promise((resolve, reject) => {
         
-        Book.find({}, (err, books) => {
+        Book.find({ isDeleted: false }, (err, books) => {
             if(err){
                 reject(err);
             } else {
@@ -156,7 +156,7 @@ exports.fakeDelete = (bookId) => {
             if(err){
                 reject(err);
             } else {
-                book.isDelete = true;
+                book.isDeleted = true;
                 book.save((err, updatedBook) => {
                     if(err){
                         reject(err);

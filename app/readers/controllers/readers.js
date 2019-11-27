@@ -89,7 +89,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    ReaderModel.delete(req.params.readerId)
+    ReaderModel.fakeDelete(req.params.readerId)
         .then((result) => {
             res.status(201).send(result);
         })

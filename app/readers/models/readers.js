@@ -13,7 +13,8 @@ const readerSchema = new Schema({
     avatar: String,
     email: String,
     introduce: String,
-    address: String
+    address: String,
+    isDeleted: Boolean
 }, { timestamps: true });
 
 const Readers = mongoose.model('Readers', readerSchema);
@@ -68,9 +69,28 @@ exports.delete = (readerId) => {
     })
 }
 
+exports.fakeDelete = (readerId) => {
+    return new Promise((resolve, reject) => {
+        Readers.findById(readerId, (err, reader) => {
+            if(err){
+                reject(err);
+            } else {
+                reader.isDeleted = true;
+                reader.save((err, updatedreader) => {
+                    if(err){
+                        reject(err);
+                    } else {
+                        resolve(updatedreader);
+                    }
+                })
+            }
+        })
+    })    
+}
+
 exports.list = () => {
     return new Promise((resolve, reject) => {
-        Readers.find({}, null, { sort: '-createdAt'}, (err, readers) => {
+        Readers.find({ isDeleted: false }, null, { sort: '-createdAt'}, (err, readers) => {
             if(err){
                 reject(err);
             } else {
