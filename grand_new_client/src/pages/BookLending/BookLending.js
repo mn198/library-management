@@ -321,7 +321,7 @@ const BookLending = (props) => {
     const handleReaderChoosen = (reader) => {
       setValues(oldValues => ({
         ...oldValues,
-        readerID: reader,
+        readerID: reader._id,
         reader_avatar: reader.avatar
       }))
       handleCloseReaderChoosen();
@@ -426,7 +426,7 @@ const BookLending = (props) => {
                                 <Card profile>
                                   <CardAvatar profile className={classes.mnSquare}>
                                     <a href="#pablo" onClick={e => e.preventDefault()}>
-                                      <Avatar src={values.book_image ? values.book_image : bookIcon} className={classes.bigAvatar}/>
+                                      <Avatar src={values.book_image ? values.book_image : bookIcon} className={classes.bigAvatar + ' ' + classes.mnSquare}/>
                                     </a>
                                   </CardAvatar>
                                   <CardBody profile>
@@ -576,11 +576,10 @@ const BookLending = (props) => {
           <React.Fragment key={rd._id} >
               <Grid item xs={12} md={4}>
             <ListItem alignItems="flex-start">
-              <ListItemAvatar onClick={() => handleReaderChoosen(rd._id) } className={classes.pointer}>
+              <ListItemAvatar onClick={() => handleReaderChoosen(rd) } className={classes.pointer}>
                 <Avatar alt="avatar" src={rd.avatar ? rd.avatar : avatar} />
               </ListItemAvatar>
               <ListItemText
-                className={classes.pointer}
                 primary={
                   <Typography
                       component="span"
