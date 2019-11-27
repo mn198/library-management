@@ -94,7 +94,7 @@ const styles = {
         marginBottom: "1rem",
         marginTop: "30px",
         minHeight: "32px",
-        fontSize: '2.8rem',
+        fontSize: '2.4rem',
         lineHeight: '1.5em',
         color: "#3C4858",
         margin: "1.75rem 0 0.875rem",
@@ -142,7 +142,7 @@ export default function Landing(props){
                             rel="noopener noreferrer"
                         >
                             <i className="fas fa-play"/>
-                            {' '}Quản lý
+                            {' '} Quản lý
                         </Button>
                         </Grid>
                     </Grid>
@@ -153,7 +153,7 @@ export default function Landing(props){
                     <div className={classes.section}>
                         <Grid container justify="center">
                             <Grid item xs={12} sm={12} md={8}>
-                            <h2 className={classes.section_title}>Chào mừng bạn đến với thư viện số</h2>
+                            <h2 className={classes.section_title}>Chào mừng bạn đến với trang quản lý thư viện</h2>
                             <h5 className={classes.description}>
                                 Đây sẽ là nơi giúp bạn thống kê thông tin về các quyển sách và đồng thời giúp bạn quản lý việc mượn sách một cách hiệu quả nhất.
                             </h5>

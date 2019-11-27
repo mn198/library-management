@@ -206,7 +206,9 @@ const BookLending = (props) => {
         dueDate: '',
         returnDate: '',
         snackbar_variant: '',
-        snackbar_message: ''
+        snackbar_message: '',
+        reader_avatar: '',
+        book_image: ''
       }))
     }
 
