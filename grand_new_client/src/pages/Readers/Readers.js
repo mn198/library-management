@@ -155,7 +155,7 @@ function Readers(props) {
       setFilterData(reader.list.filter(item => {
         return Object.keys(item).some(key => {
             if(typeof(item[key]) === 'string')
-               return item[key].toLowerCase().includes(filter)        
+               return item[key].toLowerCase().includes(filter.toLowerCase())        
         });
       }))
     } 

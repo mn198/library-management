@@ -86,7 +86,7 @@ const LendingHistory = (props) => {
             if(typeof(item[key]) === 'object'){
               return Object.keys(item[key][0]).some(kie => {
                 if(typeof(item[key][0][kie]) === 'string')
-                  return item[key][0][kie].toLowerCase().includes(filter)
+                  return item[key][0][kie].toLowerCase().includes(filter.toLowerCase())
               })
             }
         });

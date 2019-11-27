@@ -121,7 +121,7 @@ export default function AdminNavbarLinks() {
         >
           <Person className={classes.icons} />
           <Hidden mdUp implementation="css">
-            <p className={classes.linkText}>Profile</p>
+            <p className={classes.linkText}>Trang cá nhân</p>
           </Hidden>
         </Button>
         <Poppers

@@ -85,7 +85,7 @@ exports.list = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    BookModel.delete(req.params.bookId)
+    BookModel.fakeDelete(req.params.bookId)
         .then((result) => {
             res.status(200).send(result);
         })
@@ -100,7 +100,6 @@ exports.read = (req, res) => {
             res.status(200).send(result);
         })
         .catch((err) => {
-            console.log(err);
             res.status(400).send(err);
         })
 }

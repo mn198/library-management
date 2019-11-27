@@ -34,7 +34,6 @@ const bookSchema = new Schema({
     },
     format: { 
         type: String,
-        enum: bookFormat 
     },
     status: {
         type: String,
@@ -48,6 +47,9 @@ const bookSchema = new Schema({
     },
     image: {
         type: String
+    },
+    isDelete: {
+        type: Boolean
     },
     rack: { type: Schema.Types.ObjectId }
 }, { timestamps: true })
@@ -107,7 +109,6 @@ exports.read = (bookId) => {
             }}
         ], function(err, result) {
             if(err){
-                console.log(err);
                 reject(err)
             } else {
                 resolve(result);
@@ -144,6 +145,25 @@ exports.delete = (bookId) => {
                 reject(err);
             } else {
                 resolve('deleted successfully!');
+            }
+        })
+    })
+}
+
+exports.fakeDelete = (bookId) => {
+    return new Promise((resolve, reject) => {
+        Book.findById(bookId, (err, book) => {
+            if(err){
+                reject(err);
+            } else {
+                book.isDelete = true;
+                book.save((err, updatedBook) => {
+                    if(err){
+                        reject(err);
+                    } else {
+                        resolve(updatedBook);
+                    }
+                })
             }
         })
     })
