@@ -28,6 +28,8 @@ import { base_url } from '../../config/config';
 // jsonwebtoken decode
 import jwt_decode from 'jwt-decode'; 
 import setAuthToken from '../../helpers/setAuthToken';
+//background image
+import image from '../../assets/img/sign.jpg';
 
 const conatinerFluid = {
     paddingRight: "15px",
@@ -205,6 +207,11 @@ export default function LoginPage(props) {
       />
       <div
         className={classes.pageHeader}
+        style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center"
+          }}
       >
         <div className={classes.container}>
           <GridContainer justify="center">
@@ -255,7 +262,7 @@ export default function LoginPage(props) {
                         onChange: e => setEmail(e.target.value),
                         type: "email",
                         endAdornment: (
-                          <InputAdornment position="end">
+                          <InputAdornment position="start">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         )
@@ -272,7 +279,7 @@ export default function LoginPage(props) {
                         onChange: e => setPassword(e.target.value),
                         type: "password",
                         endAdornment: (
-                          <InputAdornment position="end">
+                          <InputAdornment position="start">
                             <Icon className={classes.inputIconsColor}>
                               lock_outline
                             </Icon>
