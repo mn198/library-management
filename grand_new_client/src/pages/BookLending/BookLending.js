@@ -411,7 +411,7 @@ const BookLending = (props) => {
                                         fullWidth: true
                                       }}
                                     />
-                                    <Button color="primary" round onClick={handleOpenReaderChoosen}>
+                                    <Button round onClick={handleOpenReaderChoosen}>
                                       Chọn đọc giả
                                     </Button>
                                   </CardBody>
@@ -438,7 +438,7 @@ const BookLending = (props) => {
                                         fullWidth: true
                                       }}
                                     />
-                                    <Button color="primary" round onClick={handleOpenBookChoosen}>
+                                    <Button round onClick={handleOpenBookChoosen}>
                                       Chọn sách
                                     </Button>
                                   </CardBody>
@@ -640,13 +640,13 @@ const BookLending = (props) => {
           <Grid item xs={12} md={4} key={b._id}>
           
           <Card profile>
-              <CardAvatar profile onClick={() => handleBookChoosen(b)}>
+              <CardAvatar profile onClick={() => handleBookChoosen(b)} className={classes.mnSquare + ' ' + classes.pointer}>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <Avatar variant="square" src={bookIcon} className={classes.bigAvatar} />
+                  <Avatar  src={b.image ? b.image : bookIcon} className={classes.bigAvatar} />
                 </a>
               </CardAvatar>
               <CardBody profile>
-                <Typography>{b.title}</Typography>
+                <Typography className={classes.mnTitle}>{b.title}</Typography>
                 <Typography>{b.author}</Typography>
               </CardBody>
             </Card>

@@ -172,6 +172,7 @@ const LendingHistory = (props) => {
               <TableCell>Sách</TableCell>
               <TableCell>Ngày mượn</TableCell>
               <TableCell>Hạn trả</TableCell>
+              <TableCell>Ngày trả</TableCell>
               <TableCell>Trạng thái</TableCell>
               <TableCell>Hành động</TableCell>
             </TableRow>
@@ -186,6 +187,7 @@ const LendingHistory = (props) => {
                   <TableCell>{l.book[0].title}</TableCell>
                   <TableCell>{dayjs(l.createdAt).format('DD/MM/YYYY')}</TableCell>
                   <TableCell>{dayjs(l.dueDate).format('DD/MM/YYYY')}</TableCell>
+                  <TableCell>{!l.returnDate ? 'Chưa trả' : dayjs(l.returnDate).format('DD/MM/YYYY')}</TableCell>
                   <TableCell>{dayjs(l.dueDate).isBefore(dayjs(l.createdAt)) ? <Badge color="danger">Trả trễ hạn</Badge> : <Badge color="success">Trả đúng hạn</Badge>}</TableCell>
                   <TableCell>
                     <Tooltip title="Xóa" onClick={() => handleDeleteLendingHistory(l._id)}>

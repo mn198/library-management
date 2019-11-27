@@ -109,6 +109,7 @@ exports.returnBook = (lendingId, bookId) => {
                 reject(err);
             } else {
                 thisLending.isHistory = true;
+                thisLending.returnDate = new Date();
                 BookModel.changeStatus(bookId, 'Available');
                 thisLending.save((err, updatedLending) => {
                     if(err){
