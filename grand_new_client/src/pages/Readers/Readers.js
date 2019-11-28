@@ -378,7 +378,7 @@ function Readers(props) {
     getReaderList();
   }
   // csv
-  const headers = headers = [
+  const headers = [
     { label: "Họ và tên", key: "name" },
     { label: "Giới tính", key: "gender" },
     { label: "Email", key: "email" },
