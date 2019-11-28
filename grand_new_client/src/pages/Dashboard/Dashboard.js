@@ -27,7 +27,8 @@ import { readerContext } from '../../contexts/ReaderContext';
 import { lendingContext } from '../../contexts/LendingContext';
 
 import {
-  dailySalesChart
+  dailySalesChart,
+  completedTasksChart
 } from "../../variables/charts";
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import config from '../../config/config';
