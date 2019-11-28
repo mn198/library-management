@@ -143,7 +143,7 @@ const LendingHistory = (props) => {
     ]
     useEffect(() => {
         getLendingList();
-        setCSVData(!lending ? null : lending.list.map((l) => l.isHistory === true));
+        setCSVData(!lending ? '' : lending.list.map((l) => l.isHistory === true));
     }, [])
 
     return (
