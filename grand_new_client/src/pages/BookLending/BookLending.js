@@ -156,7 +156,6 @@ const BookLending = (props) => {
       }))
     } 
 
-    const [ current, setCurrent ] = useState('');
     // dayjs
     dayjs.locale('vi');
     dayjs.extend(relativeTime);
@@ -472,6 +471,8 @@ const BookLending = (props) => {
                                         <MenuItem value={'3'}>3 ngày</MenuItem>
                                         <MenuItem value={'7'}>1 tuần</MenuItem>
                                         <MenuItem value={'14'}>2 tuần</MenuItem>
+                                        <MenuItem value={'21'}>3 tuần</MenuItem>
+                                        <MenuItem value={'30'}>1 tháng</MenuItem>
                                       </Select>
                                     </FormControl>
                                   </CardBody>
@@ -486,7 +487,7 @@ const BookLending = (props) => {
                         </Card>
                 </DialogContent>
               </Dialog>
-              <Tooltip title="Reload">
+              <Tooltip title="Tải lại">
                 <IconButton onClick={() => handleReload()}>
                   <RefreshIcon className={classes.block} color="inherit" />
                 </IconButton>

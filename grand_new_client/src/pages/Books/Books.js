@@ -523,7 +523,7 @@ function Books(props) {
                           </GridItem>
                           <GridItem xs={12} sm={12} md={4}>
                             <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="format">Thể loại</InputLabel>
+                              <InputLabel htmlFor="format">Loại sách</InputLabel>
                               <Select
                                 value={values.format}
                                 onChange={handleChange}
@@ -537,6 +537,8 @@ function Books(props) {
                                 <MenuItem value={'Ebook'}>Sách điện tử</MenuItem>
                                 <MenuItem value={'Journal'}>Nhật ký</MenuItem>
                                 <MenuItem value={'Audiobook'}>Sách nói</MenuItem>
+                                <MenuItem value={'Hardcover'}>Bìa cứng</MenuItem>
+                                <MenuItem value={'Paperback'}>Bìa mềm</MenuItem>
                               </Select>
                             </FormControl>
                           </GridItem>

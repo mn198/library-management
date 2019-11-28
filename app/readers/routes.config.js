@@ -6,7 +6,8 @@ var upload = multer({ storage: storage});
 
 exports.routesConfig = (app) => {
     app.post('/readers', [
-        upload.single('avatar'), 
+        upload.single('avatar'),
+        ValidationMiddleware.validJWTNeeded,
         ReaderController.create
 ])
 

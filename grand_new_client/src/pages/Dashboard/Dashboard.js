@@ -52,6 +52,20 @@ export default function Dashboard() {
     })
   })
 
+  const handleData = (data) => {
+    var formatCount = { Hardcover: 0, Paperback: 0, AudioBook: 0, Ebook: 0, Newspaper: 0, Magazine: 0, Journal: 0}
+    for(var i = 0; i < data.length; i++){
+      formatCount[data[i].format]++;
+    }
+
+    return {
+      labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Nhật ký"],
+      series: [[ formatCount.Hardcover, formatCount.Paperback, formatCount.AudioBook, formatCount.Ebook, formatCount.Newspaper, formatCount.Magazine, formatCount.Journal ]]
+    }
+  }
+
+  
+
   return (
     <div>
       <GridContainer>
@@ -134,35 +148,30 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      {/*}
+  
       <GridContainer>
-        <GridItem xs={12} sm={12} md={4}>
+        <GridItem xs={12} sm={12} md={12}>
           <Card chart>
             <CardHeader color="success">
               <ChartistGraph
                 className="ct-chart"
-                data={dailySalesChart.data}
+                data={handleData(book.book.list)}
                 type="Line"
                 options={dailySalesChart.options}
                 listener={dailySalesChart.animation}
               />
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>Daily Sales</h4>
-              <p className={classes.cardCategory}>
-                <span className={classes.successText}>
-                  <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                </span>{" "}
-                increase in today sales.
-              </p>
+              <h4 className={classes.cardTitle}>Thống kê loại sách</h4>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> updated 4 minutes ago
+                <AccessTime /> Cập nhật vài phút trước
               </div>
             </CardFooter>
           </Card>
         </GridItem>
+        { /*
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
             <CardHeader color="warning">
@@ -208,8 +217,9 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
+        */}
       </GridContainer>
-  */}
+  
     </div>
   );
 }
