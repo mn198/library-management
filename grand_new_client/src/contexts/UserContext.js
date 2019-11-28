@@ -8,19 +8,19 @@ export const userContext = createContext();
 const UserContextProvider = (props) => {
     const initState = {
         isLoading: false,
-        users: null
+        list: []
     }
 
     const [user, dispatch] = useReducer(userReducer, initState);
 
-/*
+
     useEffect(() => {
         axios.get(config.base_url + '/users')
             .then((result) => {
-                dispatch({ type: 'GET_USERS', payload: result.data})
+                dispatch({ type: 'GET_USER_LIST', payload: result.data})
             })
     }, [])
-*/
+
     return(
         <userContext.Provider value={{user, dispatch}}>
             {props.children}

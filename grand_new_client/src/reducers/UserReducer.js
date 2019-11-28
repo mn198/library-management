@@ -1,15 +1,20 @@
 
 const initState = {
-    users: null,
+    list: [],
     isLoading: false
 }
 
 export const userReducer = (state=initState, action) => {
     switch(action.type){
-        case 'GET_USERS':
+        case 'GET_USER_LIST':
             return {
                 ...state,
-                users: action.payload
+                list: action.payload
+            }
+        case 'RESET_USER_LIST':
+            return {
+                list: [],
+                isLoading: false
             }
         
         default:
