@@ -18,6 +18,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                         email: user[0].email,
                         permissionLevel: user[0].permissionLevel
                     }
+                    console.log(req.body);
 
                     return next();
                 } else {

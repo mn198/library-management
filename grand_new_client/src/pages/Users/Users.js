@@ -58,6 +58,11 @@ const Users = (props) => {
         axios.get(config.base_url + '/users')
         .then((result) => {
             dispatch({ type: 'GET_USER_LIST', payload: result.data})
+            console.log(result.data);
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'RESET_USER_LIST'})
         })
     }
 
@@ -114,7 +119,7 @@ const Users = (props) => {
           </TableHead>
           <TableBody>
             {
-            !user.isLoading ? null : user.list.map((usr) => {
+                user.list.map((usr) => {
                 
                     return (
                         <TableRow key={usr._id} >
