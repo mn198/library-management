@@ -46,12 +46,22 @@ const useStyles = makeStyles(styles);
 
 const Users = (props) => {
     const classes = useStyles();
-    const user = useContext(userContext);
+    const { user, dispatch } = useContext(userContext);
     const auth = userContext(authContext);
     // dayjs
     dayjs.locale('vi');
     dayjs.extend(relativeTime);
     
+    const getUserList = () => {
+        axios.get(config.base_url + '/users')
+        .then((result) => {
+            dispatch({ type: 'GET_USER_LIST', payload: result.data})
+        })
+    }
+
+    useEffect(() => {
+        getUserList();
+    }, [])
 
     return(
         <Paper className={classes.paper}>
@@ -79,7 +89,7 @@ const Users = (props) => {
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Tải lại">
-                                <IconButton>
+                                <IconButton onClick={() => getUserList()}>
                                     <RefreshIcon/>
                                 </IconButton>
                             </Tooltip>
@@ -102,7 +112,7 @@ const Users = (props) => {
           </TableHead>
           <TableBody>
             {
-            !user.user.isLoading ? null : user.user.list.map((usr) => {
+            !user.isLoading ? null : user.list.map((usr) => {
                 if(usr._id !== auth.auth.user._id){
                     return (
                         <TableRow key={usr._id} >
