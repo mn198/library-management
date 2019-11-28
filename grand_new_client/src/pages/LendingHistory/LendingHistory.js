@@ -133,7 +133,6 @@ const LendingHistory = (props) => {
       getLendingList();
     }
 
-    const [csvData, setCSVData] = useState('');
     const headers = [
       { label: "Tên đọc giả", key: "reader[0].name"},
       { label: "Tên sách", key: "book[0].title"},
@@ -143,7 +142,6 @@ const LendingHistory = (props) => {
     ]
     useEffect(() => {
         getLendingList();
-        setCSVData(!lending.list ? '' : lending.list.map((l) => l.isHistory === true));
     }, [])
 
     return (
@@ -169,7 +167,7 @@ const LendingHistory = (props) => {
             </Grid>
             <Grid item>
 
-            <CSVLink data={csvData ? csvData : ''} headers={headers} filename={"LichSuMuonTraSach.csv"}>
+            <CSVLink data={!lending ? '' : lending.list.map((l) => l.isHistory === true)} headers={headers} filename={"LichSuMuonTraSach.csv"}>
               <Tooltip title="Xuất tệp tin excel">
                 <IconButton>
                   <GetAppIcon/>
