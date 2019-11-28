@@ -24,6 +24,7 @@ import { lendingContext } from '../../contexts/LendingContext';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { CSVLink } from "react-csv";
 
 const styles = theme => ({
     paper: {
@@ -130,8 +131,18 @@ const LendingHistory = (props) => {
     const handleReload = () => {
       getLendingList();
     }
+
+    const [csvData, setCSVData] = useState(null);
+    const headers = [
+      { label: "Tên đọc giả", key: "reader[0].name"},
+      { label: "Tên sách", key: "book[0].title"},
+      { label: "Ngày mượn", key: "createdAt"},
+      { label: "Ngày phải trả", key: "dueDate"},
+      { label: "Ngày trả", key: "returnDate"}
+    ]
     useEffect(() => {
         getLendingList();
+        setCSVData(!lending ? null : lending.list.map((l) => l.isHistory === true));
     }, [])
 
     return (
@@ -156,6 +167,15 @@ const LendingHistory = (props) => {
               />
             </Grid>
             <Grid item>
+
+            <CSVLink data={csvData} headers={headers} filename={"LichSuMuonTraSach.csv"}>
+              <Tooltip title="Xuất tệp tin excel">
+                <IconButton>
+                  <GetAppIcon/>
+                </IconButton>
+              </Tooltip>
+            </CSVLink>
+
               <Tooltip title="Reload">
                 <IconButton onClick={() => handleReload()}>
                   <RefreshIcon className={classes.block} color="inherit" />

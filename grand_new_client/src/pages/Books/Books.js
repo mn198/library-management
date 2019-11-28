@@ -48,6 +48,7 @@ import { bookContext } from '../../contexts/BookContext';
 import bookIcon from "../../assets/img/flat-book-icon-27.jpg";
 import Axios from 'axios';
 import config from '../../config/config';
+import { CSVLink } from "react-csv";
 
 const styles = theme => ({
     paper: {
@@ -297,7 +298,6 @@ function Books(props) {
           getBookList();
         })
         .catch((err) => {
-          console.log(err);
           setValues(old => ({
             ...old,
             snackbar_message: 'Đã có lỗi xảy ra trong quá trình thêm sách!',
@@ -376,6 +376,19 @@ function Books(props) {
       getBookList();
     }
 
+    const headers = [
+      { label: "ISBN", key: "isbn"},
+      { label: "Ảnh bìa", key: "image"},
+      { label: "Tên sách", key: "title"},
+      { label: "Tác giả", key: "author"},
+      { label: "Số trang", key: "numberOfPages"},
+      { label: "Vị trí kệ sách", key: "rack.number"},
+      { label: "Trạng thái", key: "status"},
+      { label: "Loại sách", key: "format"},
+      { label: "Năm xuất bản", key: "publicationYear"},
+      { label: "Nhà xuất bản", key: "publisher"}
+    ]
+
     return(
     <Paper className={classes.paper}>
       <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
@@ -403,6 +416,15 @@ function Books(props) {
                   <AddIcon/>
                 </IconButton>
               </Tooltip>
+
+              <CSVLink data={book.list} headers={headers} filename={"Sach.csv"}>
+                <Tooltip title="Xuất tệp tin excel">
+                  <IconButton>
+                    <GetAppIcon/>
+                  </IconButton>
+                </Tooltip>
+              </CSVLink>
+
               <Dialog
                 open={openModal}
                 onClose={handleCloseModal}

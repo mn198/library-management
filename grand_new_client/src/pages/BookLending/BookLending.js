@@ -57,6 +57,7 @@ import { readerContext } from '../../contexts/ReaderContext';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { CSVLink } from "react-csv";
 
 import bookIcon from "../../assets/img/flat-book-icon-27.jpg";
 import avatar from "../../assets/img/tim_512x512.png";
@@ -348,6 +349,13 @@ const BookLending = (props) => {
         handleCloseBookChoosen();
       }
     }
+
+    const headers = [
+      { label: "Tên đọc giả", key: "reader[0].name"},
+      { label: "Tên sách", key: "book[0].title"},
+      { label: "Ngày mượn", key: "createdAt"},
+      { label: "Ngày phải trả", key: "dueDate"}
+    ]
     
     useEffect(() => {
         getLendingList();
@@ -380,6 +388,15 @@ const BookLending = (props) => {
                   <AddIcon/>
                 </IconButton>
               </Tooltip>
+
+              <CSVLink data={lending.list} headers={headers} filename={"DSMuonSach.csv"}>
+                <Tooltip title="Xuất tệp tin excel">
+                  <IconButton>
+                    <GetAppIcon/>
+                  </IconButton>
+                </Tooltip>
+              </CSVLink>
+
               <Dialog
                 open={openModal}
                 onClose={handleCloseModal}

@@ -380,10 +380,11 @@ function Readers(props) {
   // csv
   const headers = [
     { label: "Họ và tên", key: "name" },
-    { label: "Giới tính", key: "gender" },
+    { label: "Ảnh đại diện", key: "avatar"},
     { label: "Email", key: "email" },
     { label: "Địa chỉ", key: "address"},
-    { label: "Giới thiệu", key: "introduce"}
+    { label: "Giới thiệu", key: "introduce"},
+    { label: "Ngày tạo", key: "createdAt"}
   ];
   
   useEffect(() => {
@@ -417,7 +418,7 @@ function Readers(props) {
                 </IconButton>
               </Tooltip>
 
-              <CSVLink data={reader.list} headers={headers}>\
+              <CSVLink data={reader.list} headers={headers} filename={"DocGia.csv"}>
                 <Tooltip title="Xuất tệp tin excel">
                   <IconButton>
                     <GetAppIcon/>
