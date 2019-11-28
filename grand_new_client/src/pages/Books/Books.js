@@ -23,6 +23,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import GetAppIcon from '@material-ui/icons/GetApp';
+
 /*
 import StdCard from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
