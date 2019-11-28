@@ -200,7 +200,6 @@ const LendingHistory = (props) => {
           <TableBody>
             {
               filteredData.map((l) => {
-                if(l.isHistory === true){
                 return (
                 <TableRow key={l._id} >
                   <TableCell>{l.reader[0].name}</TableCell>
@@ -217,7 +216,7 @@ const LendingHistory = (props) => {
                     </Tooltip>
                   </TableCell>
                 </TableRow>
-              )}}
+              )}
               )
             }
           </TableBody>
