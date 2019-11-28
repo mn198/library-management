@@ -60,15 +60,17 @@ export default function Dashboard() {
   })
 
   const handleData = (data) => {
+    console.log(data);
     var formatCount = { Hardcover: 0, Paperback: 0, AudioBook: 0, Ebook: 0, Newspaper: 0, Magazine: 0, Journal: 0}
     for(var i = 0; i < data.length; i++){
       formatCount[data[i].format]++;
     }
-
+    console.log(formatCount);
     setFormatChartData({
       labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Nhật ký"],
       series: [[ formatCount.Hardcover, formatCount.Paperback, formatCount.AudioBook, formatCount.Ebook, formatCount.Newspaper, formatCount.Magazine, formatCount.Journal ]]
     })
+    console.log(formatChartData);
   }
 
   
@@ -157,7 +159,7 @@ export default function Dashboard() {
       </GridContainer>
   
       <GridContainer>
-        <GridItem xs={12} sm={12} md={12}>
+        <GridItem xs={12} sm={12} md={8}>
           <Card chart>
             <CardHeader color="success">
               <ChartistGraph
