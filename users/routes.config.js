@@ -14,7 +14,7 @@ exports.routesConfig = (app) => {
 
     app.get('/users', [
         ValidationMiddleware.validJWTNeeded,
-        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         UserController.list
     ])
 
