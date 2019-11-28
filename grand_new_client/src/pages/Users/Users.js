@@ -50,8 +50,6 @@ const Users = (props) => {
     const classes = useStyles();
     const { user, dispatch } = useContext(userContext);
     const auth = userContext(authContext);
-    console.log(auth);
-    console.log(user);
     // dayjs
     dayjs.locale('vi');
     dayjs.extend(relativeTime);

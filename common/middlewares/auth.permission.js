@@ -6,8 +6,6 @@ const ADMIN_PERMISSION = 2048;
 exports.minimumPermissionLevelRequired = (required_permission_level) => {
     return (req, res, next) => {
         let user_permission_level = parseInt(req.jwt.permissionLevel);
-        console.log(req.jwt);
-        console.log(required_permission_level);
         if(user_permission_level & required_permission_level){
             return next();
         } else {

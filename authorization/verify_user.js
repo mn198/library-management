@@ -16,7 +16,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                         userId: user[0]._id,
                         name: user[0].name,
                         email: user[0].email,
-                        permissionLevels: user[0].permissionLevels
+                        permissionLevel: user[0].permissionLevel
                     }
 
                     return next();
