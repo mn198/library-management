@@ -9,7 +9,8 @@ export const userReducer = (state=initState, action) => {
         case 'GET_USER_LIST':
             return {
                 ...state,
-                list: action.payload
+                list: action.payload,
+                isLoading: true
             }
         case 'RESET_USER_LIST':
             return {

@@ -1,6 +1,6 @@
 
 const initState = {
-    list: null,
+    list: [],
     current: null,
     isLoading: false
 }
