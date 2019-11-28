@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react";
 // react plugin for creating charts
 import { NavLink } from "react-router-dom";
-//import ChartistGraph from "react-chartist";
+import ChartistGraph from "react-chartist";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
-//import AccessTime from "@material-ui/icons/AccessTime";
+import AccessTime from "@material-ui/icons/AccessTime";
 import Accessibility from "@material-ui/icons/Accessibility";
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
@@ -20,11 +20,15 @@ import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
 import CardFooter from "../../components/Card/CardFooter.js";
-
+import CardBody from '../../components/Card/CardBody'
+//context
 import { bookContext } from '../../contexts/BookContext';
 import { readerContext } from '../../contexts/ReaderContext';
 import { lendingContext } from '../../contexts/LendingContext';
 
+import {
+  dailySalesChart
+} from "../../variables/charts";
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import config from '../../config/config';
 import axios from 'axios';
