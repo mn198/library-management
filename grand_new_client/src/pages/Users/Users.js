@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from '@material-ui/core/AppBar';
@@ -11,10 +11,16 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import { Table, TableRow, TableCell, TableHead, TableBody, Typography } from '@material-ui/core';
 // context
 import { userContext } from '../../contexts/UserContext';
 import { authContext } from '../../contexts/AuthContext';
+//dayjs
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const styles = theme => ({
     paper: {
@@ -41,6 +47,10 @@ const Users = (props) => {
     const classes = useStyles();
     const user = useContext(userContext);
     const auth = userContext(authContext);
+    // dayjs
+    dayjs.locale('vi');
+    dayjs.extend(relativeTime);
+    
 
     return(
         <Paper className={classes.paper}>
