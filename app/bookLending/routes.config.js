@@ -16,6 +16,11 @@ exports.routesConfig = (app) => {
         LendingModel.list
     ])
 
+    app.get('/lendings/isDeleted', [
+        ValidationMiddleware.validJWTNeeded,
+        LendingModel.isDeletedList
+    ])
+
     app.get('/lendings/:lendingId/:bookId', [
         ValidationMiddleware.validJWTNeeded,
         LendingModel.returnBook

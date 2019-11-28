@@ -40,7 +40,7 @@ export default function Dashboard() {
   const book = useContext(bookContext);
   const reader = useContext(readerContext);
   const lending = useContext(lendingContext);
-
+  const [lendingHis, setLendingHis] = useState(0);
   const [ formatChartData, setFormatChartData ] = useState(null);
 
 
@@ -57,6 +57,10 @@ export default function Dashboard() {
     axios.get(config.base_url + '/readers')
     .then((result) => {
         reader.dispatch({ type: 'GET_READER_LIST', payload: result.data})
+    })
+    axios.get(config.base_url + '/lendings/isDeleted')
+    .then((result) => {
+        setLendingHis(result.data);
     })
   }, [])
 
@@ -123,7 +127,7 @@ export default function Dashboard() {
                 <AccountBalanceWalletIcon/>
               </CardIcon>
               <p className={classes.cardCategory}>Lượt mượn hiện tại</p>
-              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress size={35}/> : lending.lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress size={35}/> : lending.lending.list.length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
@@ -142,7 +146,7 @@ export default function Dashboard() {
                 <HistoryIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Lịch sử mượn trả</p>
-              <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress size={35}/> : lending.lending.list.filter((item) => item.isHistory === true).length } <small>Lượt</small></h3>
+              <h3 className={classes.cardTitle}>{ !lendingHis ? <CircularProgress size={35}/> : lendingHis.length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>

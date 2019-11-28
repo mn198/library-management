@@ -20,6 +20,16 @@ exports.list = (req, res) => {
         })
 }
 
+exports.isDeletedList = (req, res) => {
+    BookLendingModel.isDeletedList()
+        .then((result) => {
+            res.status(200).send(result);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        })
+}
+
 exports.update = (req, res) => {
     BookLendingModel.update(req.params.lendingId, req.body)
         .then((result) => {

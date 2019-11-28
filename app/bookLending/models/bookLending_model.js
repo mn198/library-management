@@ -15,7 +15,7 @@ const bookLendingSchema = new Schema({
     book: {
         type: Schema.Types.ObjectId
     },
-    isHistory: {
+    isDeleted: {
         type: Schema.Types.Boolean,
         default: false
     }
@@ -31,17 +31,10 @@ exports.create = (data) => {
 
 exports.list = () => {
     return new Promise((resolve, reject) => {
-        /*
-        BookLending.find({}, (err, bookLendings) => {
-            if(err){
-                reject(err);
-            } else {
-                resolve(bookLendings);
-            }
-        })
-        */
-
        BookLending.aggregate([
+           {$match: {
+               isDeleted: false
+           }},
         { $lookup: {
          from: 'readers',
          localField: 'userId',
@@ -63,7 +56,41 @@ exports.list = () => {
         if(err){
             reject(err)
         } else {
-            resolve(JSON.stringify(result));
+            resolve(result);
+        }
+    })
+    })
+}
+
+
+exports.isDeletedList = () => {
+    return new Promise((resolve, reject) => {
+       BookLending.aggregate([
+           { $match: {
+               isDeleted: true
+           }},
+        { $lookup: {
+         from: 'readers',
+         localField: 'userId',
+         foreignField: '_id',
+         as: 'reader'
+        }}, {
+            $lookup: {
+                from: 'books',
+                localField: 'book',
+                foreignField: '_id',
+                as: 'book'
+            }
+        }, {
+            $sort: {
+                createdAt: -1
+            }
+        }
+    ], function(err, result) {
+        if(err){
+            reject(err)
+        } else {
+            resolve(result);
         }
     })
     })
@@ -108,7 +135,7 @@ exports.returnBook = (lendingId, bookId) => {
             if(err){
                 reject(err);
             } else {
-                thisLending.isHistory = true;
+                thisLending.isDeleted = true;
                 thisLending.returnDate = new Date();
                 BookModel.changeStatus(bookId, 'Available');
                 thisLending.save((err, updatedLending) => {

@@ -530,7 +530,7 @@ const BookLending = (props) => {
           <TableBody>
             {
               !lending ? null : filteredData.map((l) => {
-                if(l.isHistory === false){
+                
                 return (
                 <TableRow key={l._id}>
                   <TableCell>{l.reader[0].name}</TableCell>
@@ -551,7 +551,7 @@ const BookLending = (props) => {
                     </Tooltip>
                   </TableCell>
                 </TableRow>
-              )}}
+              )}
               )
             }
           </TableBody>

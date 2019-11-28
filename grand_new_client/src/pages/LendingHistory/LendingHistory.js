@@ -103,10 +103,11 @@ const LendingHistory = (props) => {
     const handleCloseSnackbar = () => setOpenSnackbar(false);
     const handleOpenSnackbar = () => setOpenSnackbar(true);
     
+    const [lendingHis, setLendingHis] = useState([]);
     const getLendingList = () => {
-        Axios.get(config.base_url + '/lendings')
+        Axios.get(config.base_url + '/lendings/isDeleted')
             .then((result) => {
-                dispatch({ type: 'GET_LENDING_LIST', payload: result.data})
+                setLendingHis(result.data);
                 setFilterData(result.data);
             })
     }
@@ -167,7 +168,7 @@ const LendingHistory = (props) => {
             </Grid>
             <Grid item>
 
-            <CSVLink data={!lending ? '' : lending.list.map((l) => l.isHistory === true)} headers={headers} filename={"LichSuMuonTraSach.csv"}>
+            <CSVLink data={lendingHis} headers={headers} filename={"LichSuMuonTraSach.csv"}>
               <Tooltip title="Xuất tệp tin excel">
                 <IconButton>
                   <GetAppIcon/>
