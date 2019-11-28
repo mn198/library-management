@@ -79,10 +79,10 @@ const LendingHistory = (props) => {
     const classes = useStyles();
     //search
     const [ filter, setFilter ] = useState('');
-    const [ filteredData, setFilterData] = useState(lendingHis);
+    const [ filteredData, setFilterData] = useState([]);
     const handleSearchChange = (e) => {
       setFilter(e.target.value);
-      setFilterData(!lendingHis ? null :lendingHis.filter(item => {
+      setFilterData(lendingHis.filter(item => {
         return Object.keys(item).some(key => {
             if(typeof(item[key]) === 'object'){
               return Object.keys(item[key][0]).some(kie => {
@@ -106,7 +106,6 @@ const LendingHistory = (props) => {
     const getLendingList = () => {
         Axios.get(config.base_url + '/lendings/isDeleted')
             .then((result) => {
-              console.log(result.data)
                 setLendingHis(result.data);
                 setFilterData(result.data);
             })
@@ -200,7 +199,7 @@ const LendingHistory = (props) => {
           </TableHead>
           <TableBody>
             {
-              !lendingHis ? null : filteredData.map((l) => {
+              filteredData.map((l) => {
                 if(l.isHistory === true){
                 return (
                 <TableRow key={l._id} >
