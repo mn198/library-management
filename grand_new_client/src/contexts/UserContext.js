@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useEffect} from 'react';
 import {userReducer} from '../reducers/UserReducer';
-//import axios from 'axios';
-//import config from '../config/config';
+import axios from 'axios';
+import config from '../config/config';
 
 export const userContext = createContext();
 
