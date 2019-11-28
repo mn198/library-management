@@ -77,13 +77,12 @@ const useStyles = makeStyles(styles);
 
 const LendingHistory = (props) => {
     const classes = useStyles();
-    const { lending, dispatch } = useContext(lendingContext);
     //search
     const [ filter, setFilter ] = useState('');
-    const [ filteredData, setFilterData] = useState(lending.list);
+    const [ filteredData, setFilterData] = useState(lendingHis);
     const handleSearchChange = (e) => {
       setFilter(e.target.value);
-      setFilterData(lending.list.filter(item => {
+      setFilterData(lendingHis.filter(item => {
         return Object.keys(item).some(key => {
             if(typeof(item[key]) === 'object'){
               return Object.keys(item[key][0]).some(kie => {
