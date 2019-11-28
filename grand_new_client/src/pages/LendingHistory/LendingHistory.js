@@ -133,7 +133,7 @@ const LendingHistory = (props) => {
       getLendingList();
     }
 
-    const [csvData, setCSVData] = useState(null);
+    const [csvData, setCSVData] = useState('null');
     const headers = [
       { label: "Tên đọc giả", key: "reader[0].name"},
       { label: "Tên sách", key: "book[0].title"},
