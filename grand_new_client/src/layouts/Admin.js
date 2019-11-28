@@ -15,7 +15,7 @@ import routes from "../routes";
 
 import styles from "../assets/jss/material-dashboard-react/layouts/adminStyle";
 
-import logo from "../assets/img/reactlogo.png";
+import logo from "../assets/img/rainbow.png";
 
 let ps;
 
