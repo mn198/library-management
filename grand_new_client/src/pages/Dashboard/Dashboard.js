@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // react plugin for creating charts
 import { NavLink } from "react-router-dom";
 import ChartistGraph from "react-chartist";
@@ -41,10 +41,13 @@ export default function Dashboard() {
   const reader = useContext(readerContext);
   const lending = useContext(lendingContext);
 
+  const [ formatChartData, setFormatChartData ] = useState(null);
+
   useEffect(() => {
     axios.get(config.base_url + '/books')
       .then((result) => {
-          book.dispatch({ type: 'GET_BOOK_LIST', payload: result.data})
+          book.dispatch({ type: 'GET_BOOK_LIST', payload: result.data});
+          handleData(result.data)
       })
     axios.get(config.base_url + '/lendings')
     .then((result) => {
@@ -62,10 +65,10 @@ export default function Dashboard() {
       formatCount[data[i].format]++;
     }
 
-    return {
+    setFormatChartData({
       labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Nhật ký"],
       series: [[ formatCount.Hardcover, formatCount.Paperback, formatCount.AudioBook, formatCount.Ebook, formatCount.Newspaper, formatCount.Magazine, formatCount.Journal ]]
-    }
+    })
   }
 
   
@@ -159,7 +162,7 @@ export default function Dashboard() {
             <CardHeader color="success">
               <ChartistGraph
                 className="ct-chart"
-                data={handleData(book.book.list)}
+                data={formatChartData}
                 type="Line"
                 options={dailySalesChart.options}
                 listener={dailySalesChart.animation}
