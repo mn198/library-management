@@ -20,7 +20,7 @@ import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import config from '../../config/config';
 import Badge from '../../components/Badge/Badge';
 
-import { lendingContext } from '../../contexts/LendingContext';
+//import { lendingContext } from '../../contexts/LendingContext';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
@@ -199,7 +199,7 @@ const LendingHistory = (props) => {
           </TableHead>
           <TableBody>
             {
-              !lending ? null : filteredData.map((l) => {
+              !lendingHis ? null : filteredData.map((l) => {
                 if(l.isHistory === true){
                 return (
                 <TableRow key={l._id} >
