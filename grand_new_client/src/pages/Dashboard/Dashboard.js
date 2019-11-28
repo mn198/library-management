@@ -65,7 +65,7 @@ export default function Dashboard() {
       formatCount[data[i].format]++;
     }
     setFormatChartData({
-      labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Nhật ký"],
+      labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Tạp chí CN"],
       series: [[ formatCount.Hardcover, formatCount.Paperback, formatCount.AudioBook, formatCount.Ebook, formatCount.Newspaper, formatCount.Magazine, formatCount.Journal ]]
     })
   }
@@ -201,6 +201,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
+        */}
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
             <CardHeader color="danger">
@@ -223,7 +224,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        */}
+        
       </GridContainer>
   
     </div>
