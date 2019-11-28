@@ -58,11 +58,6 @@ const Users = (props) => {
         axios.get(config.base_url + '/users')
         .then((result) => {
             dispatch({ type: 'GET_USER_LIST', payload: result.data})
-            console.log(result.data);
-        })
-        .catch((err) => {
-            console.log(err);
-            dispatch({ type: 'RESET_USER_LIST'})
         })
     }
 
@@ -108,19 +103,16 @@ const Users = (props) => {
             <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Đọc giả</TableCell>
-              <TableCell>Sách</TableCell>
-              <TableCell>Ngày mượn</TableCell>
-              <TableCell>Hạn trả</TableCell>
-              <TableCell>Ngày trả</TableCell>
-              <TableCell>Trạng thái</TableCell>
+              <TableCell>Tên</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Ngày tạo</TableCell>
               <TableCell>Hành động</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {
                 user.list.map((usr) => {
-                
+                    if(usr._id !== auth.user._id){
                     return (
                         <TableRow key={usr._id} >
                         <TableCell>{usr.name}</TableCell>
@@ -139,7 +131,7 @@ const Users = (props) => {
                             </Tooltip>
                         </TableCell>
                         </TableRow>
-                )}
+                )}}
               )
             }
           </TableBody>
