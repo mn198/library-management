@@ -135,8 +135,7 @@ export default function Landing(props){
                         <br />
                         <Button
                             variant="contained"
-                            color="secondary"
-                            
+                            color="secondary"                            
                             href="/admin"
                             target="_blank"
                             rel="noopener noreferrer"

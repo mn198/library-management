@@ -22,13 +22,13 @@ const dailySalesChart = {
   },
   options: {
     lineSmooth: Chartist.Interpolation.cardinal({
-      tension: 0
+      tension: 0,
+      fillHoles: true
     }),
     low: 0,
     high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-    fullWidth: true,
     chartPadding: {
-      right: 20,
+      right: 5,
     }
   },
   // for animation
