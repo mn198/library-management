@@ -82,7 +82,7 @@ const LendingHistory = (props) => {
     const [ filteredData, setFilterData] = useState(lendingHis);
     const handleSearchChange = (e) => {
       setFilter(e.target.value);
-      setFilterData(lendingHis.filter(item => {
+      setFilterData(!lendingHis ? null :lendingHis.filter(item => {
         return Object.keys(item).some(key => {
             if(typeof(item[key]) === 'object'){
               return Object.keys(item[key][0]).some(kie => {
@@ -102,10 +102,11 @@ const LendingHistory = (props) => {
     const handleCloseSnackbar = () => setOpenSnackbar(false);
     const handleOpenSnackbar = () => setOpenSnackbar(true);
     
-    const [lendingHis, setLendingHis] = useState([]);
+    const [lendingHis, setLendingHis] = useState('');
     const getLendingList = () => {
         Axios.get(config.base_url + '/lendings/isDeleted')
             .then((result) => {
+              console.log(result.data)
                 setLendingHis(result.data);
                 setFilterData(result.data);
             })
