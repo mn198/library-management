@@ -26,11 +26,9 @@ const dailySalesChart = {
     }),
     low: 0,
     high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    fullWidth: true,
     chartPadding: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
+      right: 20,
     }
   },
   // for animation
@@ -91,13 +89,11 @@ const emailsSubscriptionChart = {
     axisX: {
       showGrid: false
     },
+    fullWidth: true,
     low: 0,
-    high: 1000,
+    high: 50,
     chartPadding: {
-      top: 0,
-      right: 5,
-      bottom: 0,
-      left: 0
+      right: 20
     }
   },
   responsiveOptions: [

@@ -27,8 +27,7 @@ import { readerContext } from '../../contexts/ReaderContext';
 import { lendingContext } from '../../contexts/LendingContext';
 
 import {
-  dailySalesChart,
-  completedTasksChart
+  dailySalesChart
 } from "../../variables/charts";
 import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import config from '../../config/config';
@@ -43,6 +42,7 @@ export default function Dashboard() {
   const lending = useContext(lendingContext);
 
   const [ formatChartData, setFormatChartData ] = useState(null);
+
 
   useEffect(() => {
     axios.get(config.base_url + '/books')
@@ -103,7 +103,7 @@ export default function Dashboard() {
               <CardIcon color="success">
                 <LibraryBooksIcon/>
               </CardIcon>
-              <p className={classes.cardCategory}>Sách</p>
+              <p className={classes.cardCategory}>Tổng số sách</p>
               <h3 className={classes.cardTitle}>{ !book.book.isLoading ? <CircularProgress size={35}/> : book.book.list.length} <small>Quyển</small></h3>
             </CardHeader>
             <CardFooter stats>
@@ -122,7 +122,7 @@ export default function Dashboard() {
               <CardIcon color="danger">
                 <AccountBalanceWalletIcon/>
               </CardIcon>
-              <p className={classes.cardCategory}>Mượn trả</p>
+              <p className={classes.cardCategory}>Lượt mượn hiện tại</p>
               <h3 className={classes.cardTitle}>{ !lending.lending.isLoading ? <CircularProgress size={35}/> : lending.lending.list.filter((item) => item.isHistory === false).length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
@@ -178,7 +178,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        { /*
+        {/*
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
             <CardHeader color="warning">
@@ -202,7 +202,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        */}
+        
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>
             <CardHeader color="danger">
@@ -225,7 +225,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        
+        */}
       </GridContainer>
   
     </div>
