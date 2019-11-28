@@ -57,20 +57,17 @@ export default function Dashboard() {
     .then((result) => {
         reader.dispatch({ type: 'GET_READER_LIST', payload: result.data})
     })
-  })
+  }, [])
 
   const handleData = (data) => {
-    console.log(data);
-    var formatCount = { Hardcover: 0, Paperback: 0, AudioBook: 0, Ebook: 0, Newspaper: 0, Magazine: 0, Journal: 0}
+    var formatCount = { Hardcover: 0, Paperback: 0, Audiobook: 0, Ebook: 0, Newspaper: 0, Magazine: 0, Journal: 0}
     for(var i = 0; i < data.length; i++){
       formatCount[data[i].format]++;
     }
-    console.log(formatCount);
     setFormatChartData({
       labels: ["Bìa cứng", "Bìa mềm", "Sách nói", "Ebook", "Báo", "Tạp chí", "Nhật ký"],
       series: [[ formatCount.Hardcover, formatCount.Paperback, formatCount.AudioBook, formatCount.Ebook, formatCount.Newspaper, formatCount.Magazine, formatCount.Journal ]]
     })
-    console.log(formatChartData);
   }
 
   
