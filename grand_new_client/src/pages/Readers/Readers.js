@@ -418,7 +418,7 @@ function Readers(props) {
                 </IconButton>
               </Tooltip>
 
-              <CSVLink data={reader.list} headers={headers} filename={"DocGia.csv"}>
+              <CSVLink data={reader.list ? reader.list : ''} headers={headers} filename={"DocGia.csv"}>
                 <Tooltip title="Xuất tệp tin excel">
                   <IconButton>
                     <GetAppIcon/>

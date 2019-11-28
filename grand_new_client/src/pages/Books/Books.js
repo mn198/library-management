@@ -419,7 +419,7 @@ function Books(props) {
                 </IconButton>
               </Tooltip>
 
-              <CSVLink data={book.list} headers={headers} filename={"Sach.csv"}>
+              <CSVLink data={book.list ? book.list : ''} headers={headers} filename={"Sach.csv"}>
                 <Tooltip title="Xuất tệp tin excel">
                   <IconButton>
                     <GetAppIcon/>

@@ -169,7 +169,7 @@ const LendingHistory = (props) => {
             </Grid>
             <Grid item>
 
-            <CSVLink data={csvData} headers={headers} filename={"LichSuMuonTraSach.csv"}>
+            <CSVLink data={csvData ? csvData : ''} headers={headers} filename={"LichSuMuonTraSach.csv"}>
               <Tooltip title="Xuất tệp tin excel">
                 <IconButton>
                   <GetAppIcon/>

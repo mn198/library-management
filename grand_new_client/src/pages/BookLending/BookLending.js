@@ -391,7 +391,7 @@ const BookLending = (props) => {
                 </IconButton>
               </Tooltip>
 
-              <CSVLink data={lending.list} headers={headers} filename={"DSMuonSach.csv"}>
+              <CSVLink data={lending.list ? lending.list : ''} headers={headers} filename={"DSMuonSach.csv"}>
                 <Tooltip title="Xuất tệp tin excel">
                   <IconButton>
                     <GetAppIcon/>
