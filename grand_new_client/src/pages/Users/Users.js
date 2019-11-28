@@ -50,6 +50,8 @@ const Users = (props) => {
     const classes = useStyles();
     const { user, dispatch } = useContext(userContext);
     const auth = userContext(authContext);
+    console.log(auth);
+    console.log(user);
     // dayjs
     dayjs.locale('vi');
     dayjs.extend(relativeTime);
@@ -115,7 +117,7 @@ const Users = (props) => {
           <TableBody>
             {
             !user.isLoading ? null : user.list.map((usr) => {
-                if(usr._id !== auth.auth.user._id){
+                
                     return (
                         <TableRow key={usr._id} >
                         <TableCell>{usr.name}</TableCell>
@@ -134,7 +136,7 @@ const Users = (props) => {
                             </Tooltip>
                         </TableCell>
                         </TableRow>
-                )}}
+                )}
               )
             }
           </TableBody>
