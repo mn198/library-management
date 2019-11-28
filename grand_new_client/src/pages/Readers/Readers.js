@@ -47,6 +47,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import GetAppIcon from '@material-ui/icons/GetApp';
+
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -55,6 +57,7 @@ import {
 import avatar from "../../assets/img/tim_512x512.png";
 import ReaderSkeleton from './ReaderSkeleton';
 import config from '../../config/config';
+import { CSVLink } from "react-csv";
 
 const styles = theme => ({
   paper: {
@@ -374,6 +377,14 @@ function Readers(props) {
     dispatch({ type: 'RESET_READER_LIST'});
     getReaderList();
   }
+  // csv
+  const headers = headers = [
+    { label: "Họ và tên", key: "name" },
+    { label: "Giới tính", key: "gender" },
+    { label: "Email", key: "email" },
+    { label: "Địa chỉ", key: "address"},
+    { label: "Giới thiệu", key: "introduce"}
+  ];
   
   useEffect(() => {
     getReaderList();
@@ -405,6 +416,14 @@ function Readers(props) {
                   <AddIcon/>
                 </IconButton>
               </Tooltip>
+
+              <CSVLink data={reader.list} headers={headers}>\
+                <Tooltip title="Xuất tệp tin excel">
+                  <IconButton>
+                    <GetAppIcon/>
+                  </IconButton>
+                </Tooltip>
+              </CSVLink>
 
               {/* Add reader modal */}
               <Dialog
