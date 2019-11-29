@@ -112,7 +112,7 @@ const Users = (props) => {
           <TableBody>
             {
                 user.list.map((usr) => {
-                    if(usr._id !== auth.user._id){
+                    if(usr._id !== auth.user.userId){
                     return (
                         <TableRow key={usr._id} >
                         <TableCell>{usr.name}</TableCell>
