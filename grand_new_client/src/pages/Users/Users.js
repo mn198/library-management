@@ -50,6 +50,7 @@ const Users = (props) => {
     const classes = useStyles();
     const { user, dispatch } = useContext(userContext);
     const auth = useContext(authContext);
+    console.log(auth);
     // dayjs
     dayjs.locale('vi');
     dayjs.extend(relativeTime);
@@ -112,9 +113,8 @@ const Users = (props) => {
           <TableBody>
             {
                 user.list.map((usr) => {
-                    if(usr._id !== auth.user.userId){
                     return (
-                        <TableRow key={usr._id} >
+                    <TableRow key={usr._id} >
                         <TableCell>{usr.name}</TableCell>
                         <TableCell>{usr.email}</TableCell>
                         <TableCell>{dayjs(usr.createdAt).format('DD/MM/YYYY')}</TableCell>
@@ -130,8 +130,8 @@ const Users = (props) => {
                                 </IconButton>
                             </Tooltip>
                         </TableCell>
-                        </TableRow>
-                )}}
+                    </TableRow>
+                )}
               )
             }
           </TableBody>
