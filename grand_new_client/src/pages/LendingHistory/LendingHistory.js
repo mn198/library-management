@@ -160,6 +160,7 @@ const LendingHistory = (props) => {
       { label: "Ngày trả", key: "returnDate"}
     ]
     useEffect(() => {
+        document.title = "Lịch sử mượn"
         getLendingList();
     }, [])
 

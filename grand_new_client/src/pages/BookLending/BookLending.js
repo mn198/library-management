@@ -371,6 +371,7 @@ const BookLending = (props) => {
     ]
     
     useEffect(() => {
+        document.title = "Mượn sách"
         getLendingList();
     }, [])
 

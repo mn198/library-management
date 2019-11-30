@@ -155,7 +155,6 @@ export default function LoginPage(props) {
     const { auth, dispatch } = useContext(authContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     // open snackbar error message
     const [open, setOpen] = React.useState(false);
     
@@ -191,6 +190,7 @@ export default function LoginPage(props) {
     }
   
     useEffect(() => {
+      document.title = "Đăng nhập"
       if(auth.isAuthenticated){
         props.history.push('/admin');
       }

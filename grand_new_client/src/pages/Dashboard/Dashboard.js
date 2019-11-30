@@ -45,6 +45,7 @@ export default function Dashboard() {
 
 
   useEffect(() => {
+    document.title = "Trang chủ"
     axios.get(config.base_url + '/books')
       .then((result) => {
           book.dispatch({ type: 'GET_BOOK_LIST', payload: result.data});

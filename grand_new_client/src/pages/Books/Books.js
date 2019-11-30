@@ -144,6 +144,7 @@ function Books(props) {
     } 
     
     useEffect(() => {
+      document.title = "Sách"
       getBookList();
       Axios.get(config.base_url + '/racks')
         .then((result) => {

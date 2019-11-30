@@ -423,6 +423,7 @@ function Readers(props) {
   ];
   
   useEffect(() => {
+    document.title = "Đọc giả"
     getReaderList();
 }, [])
 

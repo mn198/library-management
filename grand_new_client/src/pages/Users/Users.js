@@ -335,6 +335,7 @@ const Users = (props) => {
     }
 
     useEffect(() => {
+        document.title = "Người dùng"
         getUserList();
     }, [])
 

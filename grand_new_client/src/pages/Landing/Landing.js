@@ -110,7 +110,6 @@ const styles = {
 export default function Landing(props){
     const { ...rest } = props;
     const classes = useStyles();
-
     return(
         <div>
             <Header
@@ -136,7 +135,7 @@ export default function Landing(props){
                         <Button
                             variant="contained"
                             color="secondary"                            
-                            href="/admin"
+                            href="/login"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
