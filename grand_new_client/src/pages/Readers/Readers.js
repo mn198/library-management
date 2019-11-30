@@ -273,14 +273,27 @@ function Readers(props) {
       'Content-Type': 'multipart/form-data',
     }})
       .then((result) => {
-        setValues((old) => ({
-          ...old,
-          snackbar_message: 'Thêm đọc giả thành công',
-          snackbar_variant: 'success'
-        }))
-        setOpen(false);
-        setOpenSnackbar(true);
-        getReaderList();
+        if(result.data.error){
+          //have no permission
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+            snackbar_variant: 'error'
+          }))
+          setOpenSnackbar(true);
+        } else {
+          // success
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Thêm đọc giả thành công',
+            snackbar_variant: 'success'
+          }))
+          setOpen(false);
+          setOpenSnackbar(true);
+          getReaderList();
+        }
+
+        
       })
       .catch((err) => {
         setValues((old) => ({
@@ -309,14 +322,26 @@ function Readers(props) {
       'Content-Type': 'multipart/form-data',
     }})
       .then((result) => {
-        setValues((old) => ({
-          ...old,
-          snackbar_message: 'Chỉnh sửa thành công',
-          snackbar_variant: 'success'
-        }))
-        setOpen(false);
-        setOpenSnackbar(true);
-        getReaderList();
+        if(result.data.error){
+          // have no permission
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+            snackbar_variant: 'error'
+          }))
+          setOpenSnackbar(true);
+        } else {
+          // success
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Chỉnh sửa thành công',
+            snackbar_variant: 'success'
+          }))
+          setOpen(false);
+          setOpenSnackbar(true);
+          getReaderList();
+        }
+        
       })
       .catch((err) => {
         setValues((old) => ({
@@ -331,14 +356,24 @@ function Readers(props) {
   const handleDeleteReader = () => {
     axios.delete(config.base_url + '/readers/' + values.current_reader)
       .then((result) => {
-        setValues((old) => ({
-          ...old,
-          snackbar_message: 'Đã xóa thông tin đọc giả',
-          snackbar_variant: 'success'
-        }))
-        setOpenSnackbar(true);
-        setOpen(false);
-        getReaderList();
+        if(result.data.error){
+          //have no permission
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+            snackbar_variant: 'error'
+          }))
+          setOpenSnackbar(true);
+        } else {
+          setValues((old) => ({
+            ...old,
+            snackbar_message: 'Đã xóa thông tin đọc giả',
+            snackbar_variant: 'success'
+          }))
+          setOpenSnackbar(true);
+          setOpen(false);
+          getReaderList();
+        }
       })
       .catch((err) => {
         setValues((old) => ({
@@ -403,7 +438,7 @@ function Readers(props) {
               <TextField
                 value={filter}
                 onChange={e => handleSearchChange(e)}
-                fullWidth
+                fullWidth    
                 placeholder="Tìm kiếm theo tên, barcode hoặc địa chỉ email"
                 InputProps={{
                   disableUnderline: true,
@@ -431,10 +466,10 @@ function Readers(props) {
                 open={open}
                 onClose={handleClose}
                 scroll={'body'}
-                fullWidth={true} 
+                fullWidth
                 maxWidth='md'
               >
-                <DialogContent fullWidth={true} maxWidth='md'>
+                <DialogContent>
               
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={8}>

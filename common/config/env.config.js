@@ -10,6 +10,15 @@ module.exports = {
         "NORMAL_USER": 1,
         "PAID_USER": 4,
         "ADMIN": 2048
-    }
+    },
+    "ADD_READER": 1,
+    "EDIT_READER": 2,
+    "DELETE_READER": 4,
+    "ADD_BOOK": 8,
+    "EDIT_BOOK": 16,
+    "DELETE_BOOK": 32,
+    "ADD_LENDING": 64,
+    "EDIT_LENDING": 128,
+    "DELETE_LENDING": 256
   }
   

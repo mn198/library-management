@@ -41,7 +41,7 @@ export default function Dashboard() {
   const reader = useContext(readerContext);
   const lending = useContext(lendingContext);
   const [lendingHis, setLendingHis] = useState(0);
-  const [ formatChartData, setFormatChartData ] = useState(null);
+  const [ formatChartData, setFormatChartData ] = useState({});
 
 
   useEffect(() => {

@@ -290,14 +290,26 @@ function Books(props) {
         'Content-Type': 'multipart/form-data',
       }})
         .then((result) => {
-          setValues(old => ({
-            ...old,
-            snackbar_message: 'Đã thêm sách thành công !',
-            snackbar_variant: 'success'
-          }))
-          handleOpenSnackbar();
-          handleCloseModal();
-          getBookList();
+          if(result.data.error){
+            // have no permission
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+              snackbar_variant: 'error'
+            }))
+            handleOpenSnackbar();
+          } else {
+            // success
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Đã thêm sách thành công !',
+              snackbar_variant: 'success'
+            }))
+            handleOpenSnackbar();
+            handleCloseModal();
+            getBookList();
+          }
+          
         })
         .catch((err) => {
           setValues(old => ({
@@ -330,14 +342,25 @@ function Books(props) {
         'Content-Type': 'multipart/form-data',
       }})
         .then((result) => {
-          setValues(old => ({
-            ...old,
-            snackbar_message: 'Đã chỉnh sửa thông tin sách thành công !',
-            snackbar_variant: 'success'
-          }))
-          handleOpenSnackbar();
-          handleCloseModal();
-          getBookList();
+          if(result.data.error){
+            // have no permission
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+              snackbar_variant: 'error'
+            }))
+            handleOpenSnackbar();
+          } else {
+            // success
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Đã chỉnh sửa thông tin sách thành công !',
+              snackbar_variant: 'success'
+            }))
+            handleOpenSnackbar();
+            handleCloseModal();
+            getBookList();
+          }
         })
         .catch((err) => {
           setValues(old => ({
@@ -352,14 +375,25 @@ function Books(props) {
     const handleDeleteBook = (id) => {
       Axios.delete(config.base_url + '/books/' + values.current_book)
         .then((result) => {
-          setValues(old => ({
-            ...old,
-            snackbar_message: 'Đã xóa thông tin sách!',
-            snackbar_variant: 'success'
-          }))
-          handleOpenSnackbar();
-          handleCloseModal();
-          getBookList();
+          if(result.data.error){
+            // have no permission
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+              snackbar_variant: 'error'
+            }))
+            handleOpenSnackbar();
+          } else {
+            // success
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Đã xóa thông tin sách!',
+              snackbar_variant: 'success'
+            }))
+            handleOpenSnackbar();
+            handleCloseModal();
+            getBookList();
+          }
         })
         .catch((err) => {
           setValues(old => ({

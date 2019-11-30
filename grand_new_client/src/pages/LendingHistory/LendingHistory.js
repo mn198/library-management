@@ -119,12 +119,31 @@ const LendingHistory = (props) => {
     const handleDeleteLendingHistory = (lendingId) => {
       Axios.delete(config.base_url + '/lendings/' + lendingId)
         .then((result) => {
+          if(result.data.error){
+            // have no permission
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+              snackbar_variant: 'success'
+            }))
+            handleOpenSnackbar();
+          } else {
+            //success
+            setValues(old => ({
+              ...old,
+              snackbar_message: 'Đã xóa lịch sử giao dịch vừa chọn !',
+              snackbar_variant: 'success'
+            }))
+            handleReload();
+            handleOpenSnackbar();
+          }
+        })
+        .catch((err) => {
           setValues(old => ({
             ...old,
-            snackbar_message: 'Đã xóa lịch sử giao dịch vừa chọn !',
+            snackbar_message: 'Có lỗi xảy ra trong quá trình xóa lịch sử giao dịch!',
             snackbar_variant: 'success'
           }))
-          handleReload();
           handleOpenSnackbar();
         })
     }

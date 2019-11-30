@@ -9,6 +9,8 @@ const FREE = config.permissionLevels.NORMAL_USER;
 
 exports.routesConfig = (app) => {
     app.post('/users', [
+        ValidationMiddleware.validJWTNeeded,
+        PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         UserController.create
     ])
 

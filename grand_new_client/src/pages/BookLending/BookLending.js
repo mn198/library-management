@@ -289,14 +289,25 @@ const BookLending = (props) => {
 
           Axios.post(config.base_url + '/lendings', formData, { header: { 'Content-Type': 'multipart/form-data'}})
               .then((result) => {
+                if(result.data.error){
+                  // have no permission
                   setValues(old => ({
-                      ...old,
-                      snackbar_message: 'Đã lưu thông tin mượn trả sách thành công !',
-                      snackbar_variant: 'success'
-                    }))
-                    handleOpenSnackbar();
-                    handleCloseModal();
-                    getLendingList();
+                    ...old,
+                    snackbar_message: 'Bạn không được phép dùng chức năng này. Vui lòng liên hệ người quản trị!',
+                    snackbar_variant: 'error'
+                  }))
+                  handleOpenSnackbar();
+                } else {
+                  // success
+                  setValues(old => ({
+                    ...old,
+                    snackbar_message: 'Đã lưu thông tin mượn trả sách thành công !',
+                    snackbar_variant: 'success'
+                  }))
+                  handleOpenSnackbar();
+                  handleCloseModal();
+                  getLendingList();
+                }
               })
               .catch((err) => { 
                   setValues(old => ({

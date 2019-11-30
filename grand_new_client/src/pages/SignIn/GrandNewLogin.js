@@ -194,7 +194,7 @@ export default function LoginPage(props) {
       if(auth.isAuthenticated){
         props.history.push('/admin');
       }
-    }, [auth.isAuthenticated, props.history])
+    }, [auth.isAuthenticated])
 
   return (
     <div>

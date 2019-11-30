@@ -24,7 +24,6 @@ const AuthContextProvider = (props) => {
         }
     }, []);
 
-
     return(
         <authContext.Provider value={{auth, dispatch}}>
             {props.children}
