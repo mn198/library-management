@@ -13,7 +13,7 @@ import InfoArea from '../../components/InfoArea/InfoArea';
 import Footer from './Footer';
 import Header from '../../components/Header/Header';
 import HeaderLinks from '../../components/Header/HeaderLinks';
-import Parallax from '../../components/Paralax/Paralax';
+import Parallax from '../../components/Parallax/Parallax';
 // background image
 import bg from '../../assets/img/bg.jpg';
 

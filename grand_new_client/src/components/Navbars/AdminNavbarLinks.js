@@ -10,10 +10,11 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Hidden from "@material-ui/core/Hidden";
 import Poppers from "@material-ui/core/Popper";
 import Divider from "@material-ui/core/Divider";
+import { Link } from 'react-router-dom';
+
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
 import Notifications from "@material-ui/icons/Notifications";
-import Dashboard from "@material-ui/icons/Dashboard";
 // core components
 import Button from "../CustomButtons/Button";
 
@@ -52,9 +53,12 @@ export default function AdminNavbarLinks() {
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT'})
   }
+  const mnredirect = () => {
+  }
+
   return (
-    <div>
-     
+    
+    <div> 
       <div className={classes.manager}>
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
@@ -147,25 +151,23 @@ export default function AdminNavbarLinks() {
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
-                      Trang cá nhân
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
-                      Cài đặt
-                    </MenuItem>
+                    <Link to="/profile" style={{color: '#333'}}>
+                      <MenuItem
+                        onClick={mnredirect}
+                        className={classes.dropdownItem}
+                      >
+                        Trang cá nhân
+                      </MenuItem>
+                    </Link>
+                    <Link to ="/login">
                     <Divider light />
-                    <MenuItem
-                      onClick={handleLogout}
-                      className={classes.dropdownItem}
-                    >
-                      Đăng xuất
-                    </MenuItem>
+                      <MenuItem
+                        onClick={handleLogout}
+                        className={classes.dropdownItem}
+                      >
+                        Đăng xuất
+                      </MenuItem>
+                    </Link>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

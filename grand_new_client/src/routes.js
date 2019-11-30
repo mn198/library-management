@@ -12,6 +12,8 @@ import Books from './pages/Books/Books';
 import Lendings from './pages/BookLending/BookLending';
 import LendingHistory from './pages/LendingHistory/LendingHistory';
 import Users from './pages/Users/Users';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+
 const dashboardRoutes = [
   {
     path: "/dashboard",

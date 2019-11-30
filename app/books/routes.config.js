@@ -38,7 +38,7 @@ exports.routesConfig = (app) => {
 
     app.delete('/books/:bookId', [
         ValidationMiddleware.validJWTNeeded,
-        PermissionMiddleware.minimumPermissionLevelRequired(config.delete),
+        PermissionMiddleware.minimumPermissionLevelRequired(config.DELETE_BOOK),
         BookController.delete
     ])
 }

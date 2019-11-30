@@ -8,6 +8,7 @@ import './assets/css/material-dashboard-react.css';
 import Admin from './layouts/Admin';
 import Landing from './pages/Landing/Landing';
 import Login from './pages/SignIn/GrandNewLogin';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 // context
 import AuthContextProvider from './contexts/AuthContext';
 import UserContextProvider from './contexts/UserContext';
@@ -36,6 +37,7 @@ ReactDOM.render(
                             <Switch>
                                 <Route exact path='/' component={Landing}/>
                                 <PrivateRoute path='/admin' component={Admin}/>
+                                <PrivateRoute path='/profile' component={ProfilePage}/>
                                 <Route path='/login' component={Login}/>
                             </Switch>
                         </Router>
