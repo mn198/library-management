@@ -207,8 +207,6 @@ const BookLending = (props) => {
         bookID: '',
         dueDate: '',
         returnDate: '',
-        snackbar_variant: '',
-        snackbar_message: '',
         reader_avatar: '',
         book_image: ''
       }))
@@ -273,7 +271,8 @@ const BookLending = (props) => {
     }
 
     const handleAddLending = (e) => {
-
+      e.preventDefault();
+      
         if(values.readerID === '' || values.bookID === ''){
           setValues(old => ({
             ...old,

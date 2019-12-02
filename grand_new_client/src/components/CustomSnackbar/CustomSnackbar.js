@@ -55,7 +55,7 @@ export default function MySnackbarContentWrapper(props) {
         message={
         <span id="client-snackbar" className={classes.message}>
             <Icon className={classes.icon + ' ' + classes.iconVariant} />
-            {message}
+            {message ? message : ''}
         </span>
         }
         action={[

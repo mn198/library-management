@@ -136,8 +136,6 @@ const Users = (props) => {
         email: '',
         password: '',
         permissionLevel: '',
-        snackbar_message: '',
-        snackbar_variant: '',
         current_userId: '',
         confirmPassword: '',
         title: 'Thêm người dùng'
@@ -219,8 +217,8 @@ const Users = (props) => {
       handleOpenModal();
     }
 
-    const handleAddUser = () => {
-
+    const handleAddUser = (e) => {
+      e.preventDefault();
       var count = 0;
       for(var i = 0; i < permission.length; i++){
         if(permission[i]){

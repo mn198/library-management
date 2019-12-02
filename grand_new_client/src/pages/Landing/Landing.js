@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -110,6 +110,10 @@ const styles = {
 export default function Landing(props){
     const { ...rest } = props;
     const classes = useStyles();
+
+    useEffect(() => {
+      document.title = "Quản lý thư viện"
+    }, [])
     return(
         <div>
             <Header

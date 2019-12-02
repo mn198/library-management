@@ -691,7 +691,7 @@ function Readers(props) {
             horizontal: 'right',
         }}
         open={openSnackbar}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         onClose={handleCloseSnackbar}
         >
         <CustomSnackbar
