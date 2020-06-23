@@ -45,11 +45,11 @@ LendingRouter.routesConfig(app);
 
 
 /*Adds the react production build to serve react requests*/
-// app.use('/', express.static('grand_new_client/build'));
+app.use('/', express.static('client/build'));
 /*React root*/
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'grand_new_client', 'build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 const server = app.listen(process.env.PORT || config.port, () => {
     console.log('app listening at port %s', config.port);
