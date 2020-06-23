@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from '@material-ui/core/AppBar';
@@ -227,7 +227,7 @@ const LendingHistory = (props) => {
                   <TableCell>{dayjs(l.createdAt).format('DD/MM/YYYY')}</TableCell>
                   <TableCell>{dayjs(l.dueDate).format('DD/MM/YYYY')}</TableCell>
                   <TableCell>{!l.returnDate ? 'Chưa trả' : dayjs(l.returnDate).format('DD/MM/YYYY')}</TableCell>
-                  <TableCell>{dayjs(l.dueDate).isBefore(dayjs(l.createdAt)) ? <Badge color="danger">Trả trễ hạn</Badge> : <Badge color="success">Trả đúng hạn</Badge>}</TableCell>
+                  <TableCell>{dayjs(l.dueDate).isBefore(dayjs(l.returnDate)) ? <Badge color="danger">Trả trễ hạn</Badge> : <Badge color="success">Trả đúng hạn</Badge>}</TableCell>
                   <TableCell>
                     <Tooltip title="Xóa" onClick={() => handleDeleteLendingHistory(l._id)}>
                       <IconButton>

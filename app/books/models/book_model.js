@@ -52,6 +52,9 @@ const bookSchema = new Schema({
         type: Boolean,
         default: false
     },
+    amount: {
+        type: Number
+    },
     rack: { type: Schema.Types.ObjectId }
 }, { timestamps: true })
 

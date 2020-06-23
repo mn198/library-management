@@ -51,16 +51,17 @@ export default function ProfilePage(props) {
       }
     }
     var permissionName = ["addReader", "editReader", "deleteReader", "addBook", "editBook", "deleteBook", "addLending", "editLending", "deleteLending"];
-    for(var i = 0; i < permissionTable.length; i++){
+    for(i = 0; i < permissionTable.length; i++){
       if(permissionTable[i] === 0){
         checkboxes[permissionName[i]] = true;
       }
     }
 
-
     setCheckboxes({...checkboxes})
   }, [auth.isAuthenticated])
-  const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
+  
+  //const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
+  
   return (
     <div>
       <Header

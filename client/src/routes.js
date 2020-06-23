@@ -12,7 +12,7 @@ import Books from './pages/Books/Books';
 import Lendings from './pages/BookLending/BookLending';
 import LendingHistory from './pages/LendingHistory/LendingHistory';
 import Users from './pages/Users/Users';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+//import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const dashboardRoutes = [
   {
@@ -45,7 +45,7 @@ const dashboardRoutes = [
   },
   {
     path: "/history",
-    name: "Lịch sử",
+    name: "Lịch sử trả sách",
     icon: HistoryIcon,
     component: LendingHistory,
     layout: "/admin"  

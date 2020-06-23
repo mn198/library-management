@@ -15,6 +15,8 @@ import UserContextProvider from './contexts/UserContext';
 import ReaderContextProvider from './contexts/ReaderContext';
 import BookContextProvider from './contexts/BookContext';
 import LendingContextProvider from './contexts/LendingContext';
+import LendingHistoryContextProvider from './contexts/LendingHistoryContext';
+
 // helpers
 import PrivateRoute from './helpers/PrivateRoute';
 import setAuthToken from './helpers/setAuthToken';
@@ -33,15 +35,17 @@ ReactDOM.render(
             <ReaderContextProvider>
                 <BookContextProvider>
                     <LendingContextProvider>
-                        <Router history={hist}>
-                            <Switch>
-                                <Route exact path='/' component={Landing}/>
-                                <PrivateRoute path='/admin' component={Admin}/>
-                                <PrivateRoute path='/profile' component={ProfilePage}/>
-                                <Route path='/login' component={Login}/>
-                            </Switch>
-                        </Router>
-                        </LendingContextProvider>
+                        <LendingHistoryContextProvider>
+                            <Router history={hist}>
+                                <Switch>
+                                    <Route exact path='/' component={Landing}/>
+                                    <PrivateRoute path='/admin' component={Admin}/>
+                                    <PrivateRoute path='/profile' component={ProfilePage}/>
+                                    <Route path='/login' component={Login}/>
+                                </Switch>
+                            </Router>
+                        </LendingHistoryContextProvider>
+                    </LendingContextProvider>
                 </BookContextProvider>
             </ReaderContextProvider>
         </UserContextProvider>

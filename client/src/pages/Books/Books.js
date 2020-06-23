@@ -25,13 +25,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-/*
-import StdCard from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-*/
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import Button from "../../components/CustomButtons/Button";
 import GridItem from "../../components/Grid/GridItem.js";
@@ -115,7 +108,7 @@ const styles = theme => ({
       letterSpacing: '0.0075em'
     },
     mnSquare: {
-      borderRadius: '8px'
+      borderRadius: '2px'
     },
     none: {
       display: 'none'
@@ -145,7 +138,6 @@ function Books(props) {
     
     useEffect(() => {
       document.title = "Sách"
-      getBookList();
       Axios.get(config.base_url + '/racks')
         .then((result) => {
 
@@ -156,6 +148,10 @@ function Books(props) {
 
         })
     }, [])
+
+    // const handleScroll = (e) => {
+    //   const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    // }
 
     const getBookList = () => {
       Axios.get(config.base_url + '/books')
@@ -207,13 +203,14 @@ function Books(props) {
       current_book: '',
       form_title: '',
       book_image_link: '',
-      book_image: null
+      book_image: null,
+      amount: 0
     })
 
     const setDefaultValues = () => {
       setValues(oldValues => ({
         ...oldValues,
-        isbn: '',
+      isbn: '',
       title: '',
       author: '',
       numberOfPages: '',
@@ -226,7 +223,8 @@ function Books(props) {
       current_book: '',
       form_title: 'Thêm sách mới',
       book_image_link: '',
-      book_image: null
+      book_image: null,
+      amount: ''
       }))
     }
 
@@ -260,7 +258,7 @@ function Books(props) {
             form_title: 'Chỉnh sửa thông tin sách',
             book_image_link: result.data[0].image ? result.data[0].image : '',
             book_image: result.data[0].image ? result.data[0].image : null,
-
+            amount: result.data[0].amount ? result.data[0].amount : 0 
           }))
         })
         handleOpenModal();
@@ -279,6 +277,7 @@ function Books(props) {
       formData.append('title', values.title);
       formData.append('author', values.author);
       formData.append('numberOfPages', values.numberOfPages);
+      formData.append('amount', values.amount);
       formData.append('rack', values.rack);
       formData.append('status', values.status);
       formData.append('format', values.format);
@@ -337,6 +336,7 @@ function Books(props) {
       formData.append('publisher', values.publisher);
       formData.append('publicationYear', values.publicationYear);
       formData.append('book_image', values.book_image);
+      formData.append('amount', values.amount);
 
       Axios.patch(config.base_url + '/books/' + values.current_book, formData, {
         headers: {
@@ -509,7 +509,7 @@ function Books(props) {
                               }}
                             />
                           </GridItem>
-                          <GridItem xs={12} sm={9}>
+                          <GridItem xs={12} sm={6}>
                             <CustomInput
                               labelText="Tác giả"
                               id="author"
@@ -520,6 +520,20 @@ function Books(props) {
                                 value: values.author,
                                 onChange: handleChange,
                                 name: 'author'
+                              }}
+                            />
+                          </GridItem>
+                          <GridItem xs={12} sm={12} md={3}>
+                            <CustomInput
+                              labelText="Số lượng"
+                              id="amount"
+                              formControlProps={{
+                                fullWidth: true
+                              }}
+                              inputProps={{
+                                value: values.amount,
+                                onChange: handleChange,
+                                name: 'amount'
                               }}
                             />
                           </GridItem>
@@ -692,6 +706,7 @@ function Books(props) {
               <CardBody profile>
                 <Typography className={classes.mnTitle}>{b.title}</Typography>
                 <Typography>{b.author}</Typography>
+                <Typography>Số lượng: {b.amount ? b.amount : 0}</Typography>
               </CardBody>
             </Card>
 

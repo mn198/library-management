@@ -32,13 +32,6 @@ import DoneIcon from '@material-ui/icons/Done';
 import DeleteIcon from '@material-ui/icons/Delete';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-/*
-import StdCard from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-*/
 import Axios from 'axios';
 import CustomSnackbar from '../../components/CustomSnackbar/CustomSnackbar';
 import config from '../../config/config';
@@ -371,7 +364,6 @@ const BookLending = (props) => {
     
     useEffect(() => {
         document.title = "Mượn sách"
-        getLendingList();
     }, [])
 
     return (
@@ -548,7 +540,7 @@ const BookLending = (props) => {
                   <TableCell>{l.book[0].title}</TableCell>
                   <TableCell>{dayjs(l.createdAt).format('DD/MM/YYYY')}</TableCell>
                   <TableCell>{dayjs(l.dueDate).format('DD/MM/YYYY')}</TableCell>
-                  <TableCell>{dayjs(l.dueDate).isBefore(dayjs(l.createdAt)) ? <Badge color="danger">Trễ hạn</Badge> : <Badge color="success">Đang mượn</Badge>}</TableCell>
+                  <TableCell>{dayjs(l.dueDate).isBefore(dayjs(new Date())) ? <Badge color="danger">Trễ hạn</Badge> : <Badge color="success">Đang mượn</Badge>}</TableCell>
                   <TableCell>
                     <Tooltip title="Xác nhận trả sách">
                       <IconButton onClick={() => handleReturnBook(l._id, l.book[0]._id)}>
@@ -707,7 +699,7 @@ const BookLending = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseAlertDelete} color="primary">
+          <Button onClick={handleCloseAlertDelete} color="info">
             Hủy
           </Button>
           <Button onClick={() => handleDeleteLendingBook()} color="danger">

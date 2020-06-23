@@ -25,6 +25,7 @@ import CardBody from '../../components/Card/CardBody'
 import { bookContext } from '../../contexts/BookContext';
 import { readerContext } from '../../contexts/ReaderContext';
 import { lendingContext } from '../../contexts/LendingContext';
+import { lendingHistoryContext } from '../../contexts/LendingHistoryContext';
 
 import {
   dailySalesChart
@@ -40,7 +41,8 @@ export default function Dashboard() {
   const book = useContext(bookContext);
   const reader = useContext(readerContext);
   const lending = useContext(lendingContext);
-  const [lendingHis, setLendingHis] = useState(0);
+  const lendingHis = useContext(lendingHistoryContext);
+
   const [ formatChartData, setFormatChartData ] = useState({});
 
 
@@ -61,7 +63,7 @@ export default function Dashboard() {
     })
     axios.get(config.base_url + '/lendings/isDeleted')
     .then((result) => {
-        setLendingHis(result.data);
+      lendingHis.dispatch({ type: 'GET_LENDINGHISTORY_LIST', payload: result.data})
     })
   }, [])
 
@@ -146,8 +148,8 @@ export default function Dashboard() {
               <CardIcon color="info">
                 <HistoryIcon />
               </CardIcon>
-              <p className={classes.cardCategory}>Lịch sử mượn trả</p>
-              <h3 className={classes.cardTitle}>{ !lendingHis ? <CircularProgress size={35}/> : lendingHis.length } <small>Lượt</small></h3>
+              <p className={classes.cardCategory}>Lịch sử trả sách</p>
+              <h3 className={classes.cardTitle}>{ !lendingHis.lendingHis.isLoading ? <CircularProgress size={35}/> : lendingHis.lendingHis.list.length } <small>Lượt</small></h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>

@@ -34,7 +34,7 @@ import CardFooter from '../../components/Card/CardFooter';
 import CustomInput from '../../components/CustomInput/CustomInput';
 
 
-import { Table, TableRow, TableCell, TableHead, TableBody, Typography } from '@material-ui/core';
+import { Table, TableRow, TableCell, TableHead, TableBody } from '@material-ui/core';
 // context
 import { userContext } from '../../contexts/UserContext';
 import { authContext } from '../../contexts/AuthContext';
@@ -91,7 +91,7 @@ const Users = (props) => {
     const [permission, setPermission] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     // error input
-    const [ errorInput, setErrorInput ] = useState(false);
+    //const [ errorInput, setErrorInput ] = useState(false);
 
     // state
     const [ checkboxes, setCheckboxes ] = useState({
@@ -273,7 +273,7 @@ const Users = (props) => {
         }
       }
       var permissionName = ["addReader", "editReader", "deleteReader", "addBook", "editBook", "deleteBook", "addLending", "editLending", "deleteLending"];
-      for(var i = 0; i < permissionTable.length; i++){
+      for(i = 0; i < permissionTable.length; i++){
         if(permissionTable[i] === 0){
           checkboxes[permissionName[i]] = true;
         }
@@ -477,7 +477,7 @@ const Users = (props) => {
                               formControlProps={{
                                 fullWidth: true
                               }}
-                              error={errorInput}
+                              //error={errorInput}
                               inputProps={{
                                 type: "password",
                                 name: 'confirmPassword',
