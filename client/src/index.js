@@ -7,7 +7,7 @@ import './assets/css/material-dashboard-react.css';
 // core components
 import Admin from './layouts/Admin';
 import Landing from './pages/Landing/Landing';
-import Login from './pages/SignIn/GrandNewLogin';
+import Login from './pages/SignIn/Login';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 // context
 import AuthContextProvider from './contexts/AuthContext';
